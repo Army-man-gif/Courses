@@ -2,7 +2,7 @@
  "cells": [],
  "metadata": {
   "kernelspec": {
-   "display_name": "base",
+   "display_name": "Python 3",
    "language": "python",
    "name": "python3"
   },
