@@ -1,7 +1,9 @@
 import kivy
 from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
-class SpartanApp(App):
+class SpartanGrid(App):
 
     def build(self):
 
