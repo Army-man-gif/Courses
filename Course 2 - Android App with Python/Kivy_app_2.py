@@ -10,5 +10,14 @@ class SpartanGrid(GridLayout):
 
         self.add_widget(Label(text="Student Name: "))
 
+        self.s_name = TextInput(multiline=False)
+        self.add_widget(self.s_name)
+
+
+class SpartanApp(App):
+    def build(self):
+        return SpartanGrid
+    
+    
 if __name__ == "__main__":
     SpartanApp().run()
