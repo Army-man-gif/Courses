@@ -3,12 +3,12 @@ from kivy.app import App
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.label import Label
-class SpartanGrid(App):
+class SpartanGrid(GridLayout):
 
-    def build(self):
+    def __init__(self,**kwargs):
+        super(SpartanGrid, self).__init__()
 
-        return Label(text="This is sparta!!!!")
-    
+        self.add_widget(Label(text="Student Name: "))
 
 if __name__ == "__main__":
     SpartanApp().run()
