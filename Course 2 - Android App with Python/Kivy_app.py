@@ -8,3 +8,6 @@ class SpartanApp(App):
 
         return Label(text="This is sparta!!!!")
     
+
+if __name__ == "__main__":
+    SpartanApp().run()
