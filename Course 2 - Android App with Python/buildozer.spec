@@ -119,10 +119,10 @@ fullscreen = 0
 #android.private_storage = True
 
 # (str) Android NDK directory (if empty, it will be automatically downloaded.)
-#android.ndk_path =
+#android.ndk_path = "C:\Users\khait\AppData\Local\Android\Sdk\ndk"
 
 # (str) Android SDK directory (if empty, it will be automatically downloaded.)
-#android.sdk_path =
+#android.sdk_path = "C:\Users\khait\AppData\Local\Android\Sdk"
 
 # (str) ANT directory (if empty, it will be automatically downloaded.)
 #android.ant_path =
