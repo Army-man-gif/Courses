@@ -7,6 +7,15 @@ then in a new terminal type ngrok http 8000
 
 nano ~/.bash_profile
 to access nano and create a git shortcut to allow push instantly
+gpush(){
+        echo "Enter commit message: "
+        read msg
+        git add .
+        git status
+        git commit -m "$msg"
+        git push
+        clear
+}
 -->
 
 <!doctype html>
