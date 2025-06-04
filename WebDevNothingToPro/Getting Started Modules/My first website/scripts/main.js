@@ -1,12 +1,15 @@
 const Image = document.querySelector("img");
 
 function func(e){
-    const SR = e.getAttribute("src");
-    ,if(SR === "C:\Users\khait\Downloads\Courses\WebDevNothingToPro\Getting Started Modules\My first website\images\NF.jpeg"){
-        SR.setAttribute("C:\Users\khait\Downloads\Courses\WebDevNothingToPro\Getting Started Modules\My first website\images\stormfly.png");
+    const img  = e.target;
+    const SR = img.getAttribute("src");
+    const path1 = "images/NF.jpeg";
+    const path2 ="images/stormfly.png";
+    if(SR === path1){
+        img.setAttribute("src",path2);
     }
     else{
-        SR.setAttribute("C:\Users\khait\Downloads\Courses\WebDevNothingToPro\Getting Started Modules\My first website\images\NF.jpeg");
+        img.setAttribute("src",path1);
     }
 }
 
