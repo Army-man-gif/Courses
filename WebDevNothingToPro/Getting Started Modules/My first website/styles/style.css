@@ -1,12 +1,8 @@
 html {
-  font-size:10px;
-  font-family: "Kapakana", cursive;
-
-}
-p {
-  color: red;
-  width: 500px;
-  border: 1px solid black;
+  font-size:large;
+  font-family: "UnifrakturCook", cursive;
+  font-weight: 700;
+  font-style: normal;
 }
 body {
   font-family: sans-serif;
@@ -26,4 +22,15 @@ body {
 .notebox.danger {
   border-color: red;
   font-weight: bold;
+}
+h1 {
+  font-size: 60px;
+  text-align: center;
+}
+
+p,
+li {
+  font-size: 16px;
+  line-height: 2;
+  letter-spacing: 1px;
 }
