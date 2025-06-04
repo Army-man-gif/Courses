@@ -1,4 +1,13 @@
-// Store a reference to the <h1> in a variable
-const myHeading = document.querySelector("h1");
-// Update the text content of the <h1>
-myHeading.textContent = "Hello world!"
+const Image = document.querySelector("img");
+
+function func(e){
+    const SR = e.getAttribute("src");
+    ,if(SR === "C:\Users\khait\Downloads\Courses\WebDevNothingToPro\Getting Started Modules\My first website\images\NF.jpeg"){
+        SR.setAttribute("C:\Users\khait\Downloads\Courses\WebDevNothingToPro\Getting Started Modules\My first website\images\stormfly.png");
+    }
+    else{
+        SR.setAttribute("C:\Users\khait\Downloads\Courses\WebDevNothingToPro\Getting Started Modules\My first website\images\NF.jpeg");
+    }
+}
+
+const listen = Image.addEventListener("click",func);
