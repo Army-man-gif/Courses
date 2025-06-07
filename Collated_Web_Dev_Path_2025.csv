@@ -1,0 +1,17 @@
+Stage,Category,Topic,Framework,Resource Link
+1,Core Web,HTML5,-,https://developer.mozilla.org/en-US/docs/Web/HTML
+1,Core Web,CSS3,-,https://developer.mozilla.org/en-US/docs/Web/CSS
+1,Core Web,JavaScript (ES6+),-,https://developer.mozilla.org/en-US/docs/Web/JavaScript
+1,Core Web,DOM & Web APIs,-,https://developer.mozilla.org/en-US/docs/Web/API
+2,Tools,Git & GitHub,-,https://docs.github.com/en/get-started/quickstart
+3,Python Backend,Flask Basics,Flask,Your Existing Knowledge
+3,Python Backend,Django Official Tutorial,Django,https://docs.djangoproject.com/en/stable/intro/
+3,Python Backend,Django Docs (Full Guide),Django,https://docs.djangoproject.com/en/stable/
+3,Python Backend,Django Walkthrough,Django,https://tutorial.djangogirls.org/en/
+3,Python Backend,Intermediate Django,Django,https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django
+3,Python Backend,Django Deployment,Django,https://docs.djangoproject.com/en/stable/howto/deployment/
+4,App Dev,Kivy Basics,Kivy,https://kivy.org/doc/stable/
+4,App Dev,KivyMD,Kivy,https://kivymd.readthedocs.io/
+4,ML Web App,Streamlit Docs,Streamlit,https://docs.streamlit.io/
+4,ML Web App,Streamlit Examples,Streamlit,https://github.com/daniellewisDL/streamlit-cheat-sheet
+5,Machine Learning,ML Foundations,-,https://developers.google.com/machine-learning

@@ -1,0 +1,10 @@
+Framework,Learning Area,Structured Website(s)
+Django,Official Tutorial,https://docs.djangoproject.com/en/stable/intro/
+Django,Docs (Full Guide),https://docs.djangoproject.com/en/stable/
+Django,Project Walkthrough,https://tutorial.djangogirls.org/en/
+Django,Intermediate Concepts,https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django
+Django,Deployment (Live App),https://docs.djangoproject.com/en/stable/howto/deployment/checklist/
+Flask,Official Tutorial,https://flask.palletsprojects.com/en/latest/tutorial/
+Flask,Docs (API Reference),https://flask.palletsprojects.com/en/latest/
+Flask,Project-Based Guide,https://realpython.com/tutorials/flask/
+Flask,Deployment Guide,https://flask.palletsprojects.com/en/latest/deploying/index.html
