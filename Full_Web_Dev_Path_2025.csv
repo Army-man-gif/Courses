@@ -1,0 +1,29 @@
+Stage,Category,Topic,Framework,Resource Link
+1,Core Web,HTML5,-,https://developer.mozilla.org/en-US/docs/Web/HTML
+1,Core Web,CSS3,-,https://developer.mozilla.org/en-US/docs/Web/CSS
+1,Core Web,JavaScript (ES6+),-,https://developer.mozilla.org/en-US/docs/Web/JavaScript
+1,Core Web,DOM & Web APIs,-,https://developer.mozilla.org/en-US/docs/Web/API
+2,Tools,Git & GitHub,-,https://docs.github.com/en/get-started/quickstart
+3,Python Backend,Flask Basics,Flask,Your Existing Knowledge
+3,Python Backend,Django Official Tutorial,Django,https://docs.djangoproject.com/en/stable/intro/
+3,Python Backend,Django Docs (Full Guide),Django,https://docs.djangoproject.com/en/stable/
+3,Python Backend,Django Walkthrough,Django,https://tutorial.djangogirls.org/en/
+3,Python Backend,Intermediate Django,Django,https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django
+3,Python Backend,Django Deployment,Django,https://docs.djangoproject.com/en/stable/howto/deployment/
+4,App Dev,Kivy Basics,Kivy,https://kivy.org/doc/stable/
+4,App Dev,KivyMD,Kivy,https://kivymd.readthedocs.io/
+4,ML Web App,Streamlit Docs,Streamlit,https://docs.streamlit.io/
+4,ML Web App,Streamlit Examples,Streamlit,https://github.com/daniellewisDL/streamlit-cheat-sheet
+5,Machine Learning,ML Foundations,-,https://developers.google.com/machine-learning
+2,Frontend Tools,Responsive Design,-,https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
+2,Frontend Tools,Bootstrap,Bootstrap,https://getbootstrap.com/docs/5.3/getting-started/introduction/
+2,Frontend Tools,Material Design,Material UI,https://mui.com/
+3,JS Backend,Node.js Basics,Node.js,https://nodejs.dev/en/learn
+3,JS Backend,Express.js,Express.js,https://expressjs.com/en/starter/installing.html
+4,Frontend Library,React Basics,React,https://reactjs.org/docs/getting-started.html
+4,Frontend Library,"React Advanced (Hooks, State Mgmt)",React,https://reactjs.org/docs/hooks-intro.html
+4,Frontend Library,Vue.js Basics,Vue.js,https://vuejs.org/guide/introduction.html
+4,Frontend Library,Angular Basics,Angular,https://angular.dev/guide/what-is-angular
+5,JS Tools,TypeScript,TypeScript,https://www.typescriptlang.org/docs/
+5,Full-Stack,MERN Stack Overview,"Mongo, Express, React, Node",https://www.mongodb.com/mern-stack
+6,Deployment,Hosting Full-Stack Apps,-,https://render.com/docs
