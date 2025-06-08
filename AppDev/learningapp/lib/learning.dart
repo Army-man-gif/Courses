@@ -1,7 +1,7 @@
 
 enum PlanetType {terrestrial, gas, ice }
 
-  enum Planet {
+enum Planet {
   mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
   venus(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
   // ···
@@ -23,7 +23,7 @@ enum PlanetType {terrestrial, gas, ice }
   /// Enhanced enums support getters and other methods
   bool get isGiant =>
       planetType == PlanetType.gas || planetType == PlanetType.ice;
-  }
+}
 
 
 
