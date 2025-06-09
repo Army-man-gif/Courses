@@ -11,3 +11,14 @@ a:hover{
     color: #0e9dc5;
     text-decoration: none;
 }
+.box {
+  margin: 30px;
+  width: 100px;
+  height: 100px;
+  background-color: rebeccapurple;
+  transform: rotate(0.615turn);
+}
+div.box:hover{
+    background-color: #0e9dc5;
+    text-decoration: none;
+}
