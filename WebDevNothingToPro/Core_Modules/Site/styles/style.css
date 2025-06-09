@@ -1,13 +1,13 @@
 #redirect_page{
     background-color: #98ca23a0;
 }
-a.link{
+a:link{
     color: #c10f8c;
 }
-a.visited{
+a:visited{
     color: #93d50d;
 }
-a.hover{
+a:hover{
     color: #0e9dc5;
     text-decoration: none;
 }
