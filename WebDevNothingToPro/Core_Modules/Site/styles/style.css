@@ -2,7 +2,7 @@
     background-color: #98ca23a0;
 }
 #Page{
-    background: red url("../images/download.jpeg") 10px 10px repeat;
+    background:url("../images/download.jpeg") 400px 10px repeat-y;
 }
 a:link{
     color: #c10f8c;
