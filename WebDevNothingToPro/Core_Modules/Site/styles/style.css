@@ -1,6 +1,9 @@
 #redirect_page{
     background-color: #98ca23a0;
 }
+#Page{
+    background: red url("../images/download.jpeg") 10px 10px repeat;
+}
 a:link{
     color: #c10f8c;
 }
