@@ -1,5 +1,16 @@
 
-enum PlanetType {terrestrial, gas, ice }
+enum PlanetType {
+  terrestrial("terrestrial"),
+  gas("gas"), 
+  ice("ice");
+  
+  final String name;
+
+  const PlanetType(
+    this.name,
+  );
+  
+}
 
 enum Planet {
   mercury(planetType: PlanetType.terrestrial, moons: 0, hasRings: false),
@@ -32,9 +43,10 @@ void main(){
   var flybyObjects = ['Jupiter', 'Saturn', 'Uranus', 'Neptune'];
   flybyObjects.where((name) => name.contains('turn')).forEach(print);
   final yourPlanet = Planet.uranus;
+  String Pname = yourPlanet.planetType.name;
   if(!yourPlanet.isGiant) {
-    print('Your planet is not a "giant planet".');
+    print('Your planet is a $Pname planet which is not "giant planet".');
   }else{
-    print('Your planet is a "giant planet".');
+    print('Your planet is a $Pname planet which is a "giant planet".');
   }
 }
