@@ -15,13 +15,10 @@ a:hover{
     text-decoration: none;
 }
 .box {
-  margin: 30px;
-  width: 100px;
-  height: 100px;
-  background-color: rebeccapurple;
-  transform: rotate(0.615turn);
-}
-div.box:hover{
-    background-color: #0e9dc5;
-    text-decoration: none;
+  background-image: url("https://mdn.github.io/shared-assets/images/examples/balloons.jpg");
+  background-repeat: no-repeat;
+  background-size:contain;
+  width: 200px;
+  height: 200px; /* Add height */
+  border: 1px solid black; /* Optional: to see the box outline */
 }
