@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Showcase</title>
+  <link href="styles/style.css" rel="stylesheet">
+  <script defer src="scripts/update.js" ></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    form { margin-bottom: 40px; }
+    input, button { margin: 5px 0; padding: 5px; }
+    .output { margin-top: 10px; color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+<h1>Form Input Types and Attributes</h1>
+
+<form id="exampleForm">
+  <label for="textInput">Text input:</label><br />
+  <input type="text" id="textInput" name="textInput" placeholder="Type your name..." required /><br />
+
+  <label for="emailInput">Email:</label><br />
+  <input type="email" id="emailInput" name="emailInput" placeholder="you@example.com" /><br />
+
+  <label for="numberInput">Number (1 to 10):</label><br />
+  <input type="number" id="numberInput" name="numberInput" min="1" max="10" /><br />
+
+  <label for="passwordInput">Password:</label><br />
+  <input type="password" id="passwordInput" name="passwordInput" /><br />
+
+  <label for="searchInput">Search:</label><br />
+  <input type="search" id="searchInput" name="searchInput" placeholder="Search..." /><br />
+
+  <label for="fileInput">Upload a file:</label><br />
+  <input type="file" id="fileInput" name="fileInput" /><br />
+
+  <label for="rangeInput">Range (slider):</label><br />
+  <input type="range" id="rangeInput" name="rangeInput" min="0" max="100" /><br />
+
+  <label for="checkboxInput">I agree to the terms:</label>
+  <input type="checkbox" id="checkboxInput" name="terms" /><br />
+
+  <p>Choose one:</p>
+  <input type="radio" id="option1" name="choice" value="Option 1" />
+  <label for="option1">Option 1</label><br />
+  <input type="radio" id="option2" name="choice" value="Option 2" />
+  <label for="option2">Option 2</label><br />
+
+  <br />
+  <input type="submit" value="Submit Form" />
+</form>
+
+<div class="output" id="formOutput"></div>
+
+</body>
+</html>
