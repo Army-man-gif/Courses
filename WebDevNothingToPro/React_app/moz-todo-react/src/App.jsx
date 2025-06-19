@@ -1,8 +1,8 @@
 import './App.css'
 
 
-const subject = "REACT";
-function App() {
+function App(props) {
+  console.log(props)
   return (
     <>
       <header>
