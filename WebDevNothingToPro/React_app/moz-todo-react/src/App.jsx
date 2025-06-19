@@ -4,7 +4,7 @@ function App() {
   return (
     <>
       <header>
-        <h1>I'm trying to make a React app for the first time, assisted by the vite build tool</h1>
+        <h1>I'm trying to make a React app for the first time, assisted by the "vite" build tool</h1>
       </header>
 
     </>
