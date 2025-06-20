@@ -224,7 +224,7 @@ body {
 .todo-text:focus-visible {
   box-shadow: inset 0 0 0 2px;
 }
-/* End todo item styles */
+/* End Todo item styles */
 /* Checkbox styles */
 .c-cb {
   -webkit-font-smoothing: antialiased;
