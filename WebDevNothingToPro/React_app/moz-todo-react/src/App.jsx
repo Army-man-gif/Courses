@@ -1,6 +1,6 @@
 import "./App_replacedcss.css"
 import Form from './Form.jsx'
-import Button from './Button.jsx'
+import Buttons from './Buttons.jsx'
 import Tasks from './Tasks.jsx'
 
 function App() {
