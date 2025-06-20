@@ -1,10 +1,10 @@
 import "./App_replacedcss.css"
-import {Greeting} from './Greeting.jsx'
+import Form from './Form.jsx'
 function App() {
   return (
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
-      
+      <Form/>
       <div className="filters btn-group stack-exception">
         <button type="button" className="btn toggle-btn" aria-pressed="true">
           <span className="visually-hidden">Show </span>
