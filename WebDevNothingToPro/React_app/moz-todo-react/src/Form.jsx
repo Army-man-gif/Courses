@@ -1,9 +1,9 @@
 
 
-function Form({id,type}) {
+function Form({id,type,addTask}) {
   function handleSubmit(event){
     event.preventDefault();
-    alert("Yo");
+    addTask("Yffsdfo");
   }
   return (
     <>

@@ -4,6 +4,9 @@ import Buttons from './Buttons.jsx'
 import Task from './Task.jsx'
 
 function App() {
+  function addTask(name){
+    alert(name);
+  }
   const values = [
     { id: "todo-0", name: "Eat", isChecked: true },
     { id: "todo-1", name: "Sleep", isChecked: false },
@@ -12,7 +15,7 @@ function App() {
   return (
     <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
-      <Form id="new-todo-input" type="text"/>
+      <Form id="new-todo-input" type="text" addTask={addTask}/>
       <div className="filters btn-group stack-exception">
         <Buttons first="Show" second="All" third="tasks"/>
         <Buttons first="Show" second="Active" third="tasks"/>
