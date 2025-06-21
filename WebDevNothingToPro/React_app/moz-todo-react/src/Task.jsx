@@ -1,10 +1,10 @@
 function Task({name,id}){
   return(
-    <span>
+    <>
           <div className="c-cb">
             <input id={id} type="checkbox" defaultChecked />
             <label className="todo-label" htmlFor={id}>
-              Eat
+              {name}
             </label>
           </div>
           <div className="btn-group">
@@ -15,13 +15,7 @@ function Task({name,id}){
               Delete <span className="visually-hidden">{name}</span>
             </button>
           </div>
-          <div className="c-cb">
-            <input id="todo-1" type="checkbox" />
-            <label className="todo-label" htmlFor="todo-1">
-              Sleep
-            </label>
-          </div>
-    </span>
+    </>
   )
 }
 
