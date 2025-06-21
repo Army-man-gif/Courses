@@ -7,6 +7,19 @@ import { nanoid } from "nanoid";
 
 
 function App() {
+  
+  function toggleTaskCompleted(id) {
+    const updatedTasks = currentVal.map((task) => {
+      if (id === task.id){
+        console.log(task);
+        return {...task, isChecked: !task.isChecked}
+      }
+      return task;
+
+    })
+    setValues(updatedTasks);
+
+  }
   function addTask(name){
     const newValue = {id:`todo-${nanoid()}`,name:name,isChecked:false}
     setValues([...currentVal,newValue]);
@@ -20,7 +33,10 @@ function App() {
 
   const [currentVal,setValues] = useState(values);
   const [count,setCount] = useState(currentVal.length);
-
+  let countNoun = "tasks";
+  if(count==1){
+    countNoun = "task";
+  }
   return (
     <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
@@ -30,7 +46,7 @@ function App() {
         <Buttons first="Show" second="Active" third="tasks"/>
         <Buttons first="Show" second="Completed" third="tasks"/>
       </div>
-      <h2 id="list-heading">{count} tasks remaining</h2>
+      <h2 id="list-heading">{count} {countNoun} remaining</h2>
       
       <ul
         role="list"
@@ -38,7 +54,7 @@ function App() {
         aria-labelledby="list-heading">
         {currentVal.map((task)=>(
           <li key={task.id} className="todo stack-small">
-            <Task id={task.id} name={task.name} isChecked={task.isChecked}/>
+            <Task id={task.id} name={task.name} isChecked={task.isChecked} toggleTaskCompleted={toggleTaskCompleted}/>
           </li>
         ))}
       </ul>

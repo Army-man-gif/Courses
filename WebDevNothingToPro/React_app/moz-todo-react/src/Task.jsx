@@ -1,8 +1,8 @@
-function Task({name,id,isChecked}){
+function Task({name,id,isChecked,toggleTaskCompleted}){
   return(
     <>
           <div className="c-cb">
-            <input id={id} type="checkbox" defaultChecked={isChecked} />
+            <input id={id} type="checkbox" defaultChecked={isChecked} name={name} key={id} onChange={() => toggleTaskCompleted(id)} />
             <label className="todo-label" htmlFor={id}>
               {name}
             </label>
