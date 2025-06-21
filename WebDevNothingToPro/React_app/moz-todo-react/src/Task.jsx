@@ -14,6 +14,7 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
   }
   const editTemplate = (
     <>
+      <form onSubmit={handleSubmit}>
           <div className="c-cb">
             <input id={id} type="text" name={newName} key={id} onChange={handleChange} />
             <label className="todo-label" htmlFor={id}>
@@ -28,6 +29,7 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
               Save <span className="visually-hidden">renaming {newName}</span>
             </button>
           </div>
+      </form>
     </>
   );
   const viewTemplate = (
