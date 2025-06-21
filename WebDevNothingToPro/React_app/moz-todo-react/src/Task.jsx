@@ -1,4 +1,4 @@
-function Task({name,id,isChecked,toggleTaskCompleted}){
+function Task({name,id,isChecked,toggleTaskCompleted,deleteTask}){
   return(
     <>
           <div className="c-cb">
@@ -11,7 +11,7 @@ function Task({name,id,isChecked,toggleTaskCompleted}){
             <button type="button" className="btn">
               Edit <span className="visually-hidden">{name}</span>
             </button>
-            <button type="button" className="btn btn__danger">
+            <button type="button" className="btn btn__danger" onClick={() => deleteTask(id)} >
               Delete <span className="visually-hidden">{name}</span>
             </button>
           </div>

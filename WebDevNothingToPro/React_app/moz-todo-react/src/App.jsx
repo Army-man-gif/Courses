@@ -7,7 +7,9 @@ import { nanoid } from "nanoid";
 
 
 function App() {
-  
+  function deleteTask(id){
+    
+  }
   function toggleTaskCompleted(id) {
     const updatedTasks = currentVal.map((task) => {
       if (id === task.id){
@@ -54,7 +56,13 @@ function App() {
         aria-labelledby="list-heading">
         {currentVal.map((task)=>(
           <li key={task.id} className="todo stack-small">
-            <Task id={task.id} name={task.name} isChecked={task.isChecked} toggleTaskCompleted={toggleTaskCompleted}/>
+            <Task 
+              id={task.id} 
+              name={task.name} 
+              isChecked={task.isChecked} 
+              toggleTaskCompleted={toggleTaskCompleted}
+              deleteTask={deleteTask}
+            />
           </li>
         ))}
       </ul>
