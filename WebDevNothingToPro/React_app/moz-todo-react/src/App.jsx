@@ -2,6 +2,8 @@ import "./App_replacedcss.css"
 import Form from './Form.jsx'
 import Buttons from './Buttons.jsx'
 import Task from './Task.jsx'
+import { useState } from "react";
+
 
 function App() {
   function addTask(name){
@@ -12,6 +14,8 @@ function App() {
     { id: "todo-1", name: "Sleep", isChecked: false },
     { id: "todo-2", name: "Repeat", isChecked: false },
   ];
+
+  const [initialValues,setValues] = useState(values);
   return (
     <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
