@@ -1,4 +1,5 @@
 function Tasks(){
+  return(
     <ul
         role="list"
         className="todo-list stack-large stack-exception"
@@ -52,6 +53,7 @@ function Tasks(){
           </div>
         </li>
       </ul>
+  )
 }
 
 export default Tasks
