@@ -29,7 +29,7 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask}){
             </label>
           </div>
           <div className="btn-group">
-            <button type="button" className="btn">
+            <button type="button" className="btn" onClick={() => setEditing(true)}>
               Edit <span className="visually-hidden">{name}</span>
             </button>
             <button type="button" className="btn btn__danger" onClick={() => deleteTask(id)} >
