@@ -54,6 +54,13 @@ function App() {
   if(count==1){
     countNoun = "task";
   }
+  const [filter, setFilter] = useState("All");
+  const FILTER_MAP = {
+    All: () => true,
+    Active: (task) => !task.isChecked,
+    Completed: (task) => task.isChecked,
+  };
+  const FILTER_NAMES = Object.keys(FILTER_MAP);
   return (
     <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
