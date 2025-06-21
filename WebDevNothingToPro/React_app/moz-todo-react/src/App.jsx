@@ -19,13 +19,13 @@ function App() {
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
         <li className="todo stack-small">
-          <Task id="todo-0" name="Eat"/>
+          <Task id="todo-0" name="Eat" isChecked={true}/>
         </li>
         <li className="todo stack-small">
-          <Task id="todo-1" name="Sleep"/>
+          <Task id="todo-1" name="Sleep" isChecked={false}/>
         </li>
         <li className="todo stack-small">
-          <Task id="todo-2" name="Repeat"/>
+          <Task id="todo-2" name="Repeat" isChecked={false}/>
         </li>
       </ul>
         

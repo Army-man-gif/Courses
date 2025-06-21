@@ -1,8 +1,8 @@
-function Task({name,id}){
+function Task({name,id,isChecked}){
   return(
     <>
           <div className="c-cb">
-            <input id={id} type="checkbox" defaultChecked />
+            <input id={id} type="checkbox" defaultChecked={isChecked} />
             <label className="todo-label" htmlFor={id}>
               {name}
             </label>
