@@ -12,10 +12,9 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
     setNewName(e.target.value);
   }
   const editTemplate = (
-    <>
       <form onSubmit={handleSubmit}>
           <div className="c-cb">
-            <input id={`edit-${id}`} type="text" name={newName} value={newName} key={id} onChange={handleChange} />
+            <input id={`edit-${id}`} type="text" value={newName} key={id} onChange={handleChange} />
             <label className="todo-label" htmlFor={`edit-${id}`}>
               {newName}
             </label>
@@ -29,12 +28,11 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
             </button>
           </div>
       </form>
-    </>
   );
   const viewTemplate = (
     <>
           <div className="c-cb">
-            <input id={`view-${id}`} type="checkbox" defaultChecked={isChecked} key={id} onChange={() => toggleTaskCompleted(id)} />
+            <input id={`view-${id}`} type="checkbox" defaultChecked={isChecked} onChange={() => toggleTaskCompleted(id)} />
             <label className="todo-label" htmlFor={`view-${id}`}>
               {newName}
             </label>
