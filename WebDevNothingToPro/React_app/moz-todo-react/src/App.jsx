@@ -18,6 +18,7 @@ function App() {
     })
     setValues(editedTasks);
   }
+  
   function deleteTask(id){
     const remainingTasks = currentVal.filter((task) => id !== task.id);
     setCount(count-1)
