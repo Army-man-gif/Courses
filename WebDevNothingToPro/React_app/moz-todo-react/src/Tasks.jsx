@@ -1,4 +1,4 @@
-function Tasks(){
+function Task(){
   return(
     <ul
         role="list"
@@ -20,6 +20,7 @@ function Tasks(){
             </button>
           </div>
         </li>
+
         <li className="todo stack-small">
           <div className="c-cb">
             <input id="todo-1" type="checkbox" />
@@ -56,4 +57,4 @@ function Tasks(){
   )
 }
 
-export default Tasks
+export default Task

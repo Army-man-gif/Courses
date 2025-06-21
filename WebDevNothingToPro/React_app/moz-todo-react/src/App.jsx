@@ -1,7 +1,7 @@
 import "./App_replacedcss.css"
 import Form from './Form.jsx'
 import Buttons from './Buttons.jsx'
-import Tasks from './Tasks.jsx'
+import Task from './Task.jsx'
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Buttons first="Show" second="COMpleted" third="tasks"/>
       </div>
       <h2 id="list-heading">3 tasks remaining</h2>
-      <Tasks/>
+      <Task/>
     </div>
   );
 }
