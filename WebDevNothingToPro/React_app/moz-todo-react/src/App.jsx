@@ -4,8 +4,13 @@ import Buttons from './Buttons.jsx'
 import Task from './Task.jsx'
 
 function App() {
+  const DATA = [
+    { id: "todo-0", name: "Eat", isChecked: true },
+    { id: "todo-1", name: "Sleep", isChecked: false },
+    { id: "todo-2", name: "Repeat", isChecked: false },
+  ];
   return (
-    <div className="todoapp stack-large">
+    <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
       <Form id="new-todo-input" type="text"/>
       <div className="filters btn-group stack-exception">
@@ -14,19 +19,16 @@ function App() {
         <Buttons first="Show" second="Completed" third="tasks"/>
       </div>
       <h2 id="list-heading">3 tasks remaining</h2>
+      
       <ul
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
-        <li className="todo stack-small">
-          <Task id="todo-0" name="Eat" isChecked={true}/>
-        </li>
-        <li className="todo stack-small">
-          <Task id="todo-1" name="Sleep" isChecked={false}/>
-        </li>
-        <li className="todo stack-small">
-          <Task id="todo-2" name="Repeat" isChecked={false}/>
-        </li>
+        {DATA.map((task)=>(
+          <li className="todo stack-small">
+            <Task id={task.id} name={task.name} isChecked={task.isChecked}/>
+          </li>
+        ))}
       </ul>
         
     </div>
