@@ -1,6 +1,7 @@
-
+import { useState } from "react";
 
 function Form({id,type,addTask}) {
+  const[name,setName] = useState("Learn react");
   function handleSubmit(event){
     event.preventDefault();
     addTask("Yffsdfo");
