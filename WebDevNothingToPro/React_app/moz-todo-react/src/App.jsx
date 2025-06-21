@@ -7,6 +7,17 @@ import { nanoid } from "nanoid";
 
 
 function App() {
+  
+  function editTask(id, newName){
+    const editedTasks = currentVal.map((task) => {
+      if (id === task.id){
+        console.log(task);
+        return {...task, name: newName}
+      }
+      return task;
+    })
+    setValues(editedTasks);
+  }
   function deleteTask(id){
     const remainingTasks = currentVal.filter((task) => id !== task.id);
     setCount(count-1)
@@ -65,6 +76,7 @@ function App() {
               isChecked={task.isChecked} 
               toggleTaskCompleted={toggleTaskCompleted}
               deleteTask={deleteTask}
+              editTask={editTask}
             />
           </li>
         ))}
