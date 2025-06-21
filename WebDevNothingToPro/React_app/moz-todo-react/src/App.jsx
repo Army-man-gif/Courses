@@ -8,7 +8,9 @@ import { nanoid } from "nanoid";
 
 function App() {
   function deleteTask(id){
-    
+    const remainingTasks = currentVal.filter((task) => id !== task.id);
+    setValues(remainingTasks);
+
   }
   function toggleTaskCompleted(id) {
     const updatedTasks = currentVal.map((task) => {
