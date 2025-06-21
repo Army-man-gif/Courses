@@ -61,15 +61,21 @@ function App() {
     Completed: (task) => task.isChecked,
   };
   const FILTER_NAMES = Object.keys(FILTER_MAP);
+  const filterList = FILTER_NAMES.map((name) => (
+    <Buttons 
+      first={"Show"} 
+      second={name} 
+      third={"tasks"}
+      isPressed={name === filter}
+      setFilter={setFilter}
+     />
+  ));
   return (
     <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
       <Form id="new-todo-input" type="text" addTask={addTask}/>
-      <div className="filters btn-group stack-exception">
-        <Buttons first="Show" second="All" third="tasks"/>
-        <Buttons first="Show" second="Active" third="tasks"/>
-        <Buttons first="Show" second="Completed" third="tasks"/>
-      </div>
+      <div className="filters btn-group stack-exception">{filterList}</div>
+
       <h2 id="list-heading">{count} {countNoun} remaining</h2>
       
       <ul

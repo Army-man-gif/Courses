@@ -1,7 +1,7 @@
-function Button({first,second,third}){
+function Button({first,second,third,isPressed}){
   return (
 
-        <button type="button" className="btn toggle-btn" aria-pressed="true">
+        <button type="button" className="btn toggle-btn" aria-pressed={isPressed}>
 
           <span className="visually-hidden">{first} </span>
 
