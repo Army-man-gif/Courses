@@ -13,7 +13,7 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
   }
   const editTemplate = (
       <form onSubmit={handleSubmit}>
-          <div className="c-cb">
+          <div>
             <input id={`edit-${id}`} type="text" value={newName} key={id} onChange={handleChange} />
             <label className="todo-label" htmlFor={`edit-${id}`}>
               {newName}
