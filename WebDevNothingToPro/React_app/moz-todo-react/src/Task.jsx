@@ -5,7 +5,7 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
   const [newName, setNewName] = useState(name);
   function handleSubmit(e) {
     e.preventDefault();
-    editTask(props.id, newName);
+    editTask(id, newName);
     setNewName("");
     setEditing(false);
   }
