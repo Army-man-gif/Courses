@@ -4,7 +4,7 @@ import Buttons from './Buttons.jsx'
 import Task from './Task.jsx'
 
 function App() {
-  const DATA = [
+  const values = [
     { id: "todo-0", name: "Eat", isChecked: true },
     { id: "todo-1", name: "Sleep", isChecked: false },
     { id: "todo-2", name: "Repeat", isChecked: false },
@@ -24,7 +24,7 @@ function App() {
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
-        {DATA.map((task)=>(
+        {values.map((task)=>(
           <li className="todo stack-small">
             <Task id={task.id} name={task.name} isChecked={task.isChecked}/>
           </li>
