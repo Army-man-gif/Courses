@@ -1,10 +1,18 @@
 import { useState } from "react";
 
+
 function Form({id,type,addTask}) {
-  const[name,setName] = useState("Learn react");
+
+  const[name,setName] = useState("");
+
+  function handleChange(event){
+    setName(event.target.value);
+  }
+
   function handleSubmit(event){
     event.preventDefault();
-    addTask("Yffsdfo");
+    addTask(name);
+    setName("")
   }
   return (
     <>
@@ -20,6 +28,8 @@ function Form({id,type,addTask}) {
           className="input input__lg"
           name="text"
           autoComplete="off"
+          value={name}
+          onChange={handleChange}
         />
         <button type="submit" className="btn btn__primary btn__lg">
           Add

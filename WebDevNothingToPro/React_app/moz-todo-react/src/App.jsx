@@ -28,7 +28,7 @@ function App() {
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
         {values.map((task)=>(
-          <li className="todo stack-small">
+          <li key={task.id} className="todo stack-small">
             <Task id={task.id} name={task.name} isChecked={task.isChecked}/>
           </li>
         ))}
