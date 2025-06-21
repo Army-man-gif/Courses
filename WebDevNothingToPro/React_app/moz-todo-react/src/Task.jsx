@@ -38,6 +38,11 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask}){
           </div>
     </>
   );
+  return (
+    <>
+      {isEditing ? editTemplate : viewTemplate};
+    </>
+  )
 }
 
 export default Task
