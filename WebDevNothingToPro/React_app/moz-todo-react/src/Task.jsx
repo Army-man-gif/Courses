@@ -11,13 +11,11 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
   function handleChange(e) {
     setNewName(e.target.value);
   }
+
   const editTemplate = (
       <form onSubmit={handleSubmit}>
           <div>
             <input id={`edit-${id}`} type="text" value={newName} key={id} onChange={handleChange} />
-            <label className="todo-label" htmlFor={`edit-${id}`}>
-              {newName}
-            </label>
           </div>
           <div className="btn-group">
             <button type="button" className="btn" onClick={() => setEditing(false)}>
