@@ -1,6 +1,6 @@
 
 
-function Form({id}) {
+function Form({id,type}) {
   return (
     <>
       <form>
@@ -10,7 +10,7 @@ function Form({id}) {
           </label>
         </h2>
         <input
-          type="text"
+          type={type}
           id={id}
           className="input input__lg"
           name="text"
