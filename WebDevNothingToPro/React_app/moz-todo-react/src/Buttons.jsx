@@ -1,36 +1,14 @@
-function Button(){
-    <div className="filters btn-group stack-exception">
+function Button({first,second,third}){
 
         <button type="button" className="btn toggle-btn" aria-pressed="true">
 
-          <span className="visually-hidden">Show </span>
+          <span className="visually-hidden">{first} </span>
 
-          <span>all</span>
+          <span>{second}</span>
 
-          <span className="visually-hidden"> tasks</span>
-
-        </button>
-
-        <button type="button" className="btn toggle-btn" aria-pressed="false">
-
-          <span className="visually-hidden">Show </span>
-
-          <span>Active</span>
-
-          <span className="visually-hidden"> tasks</span>
+          <span className="visually-hidden"> {third}</span>
 
         </button>
-
-        <button type="button" className="btn toggle-btn" aria-pressed="false">
-
-          <span className="visually-hidden">Show </span>
-
-          <span>Completed</span>
-
-          <span className="visually-hidden"> tasks</span>
-
-        </button>
-      </div>
 }
 
 export default Button

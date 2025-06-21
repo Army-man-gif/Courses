@@ -8,7 +8,11 @@ function App() {
     <div className="todoapp stack-large">
       <h1>TodoMatic</h1>
       <Form/>
-      <Button/>
+      <div className="filters btn-group stack-exception">
+        <Button first="Show" second="all" third="tasks"/>
+        <Button first="Show" second="ACTIVE" third="tasks"/>
+        <Button first="Show" second="COMpleted" third="tasks"/>
+      </div>
       <h2 id="list-heading">3 tasks remaining</h2>
       <Tasks/>
     </div>
