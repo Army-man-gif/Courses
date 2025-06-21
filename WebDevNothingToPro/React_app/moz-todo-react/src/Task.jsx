@@ -6,7 +6,6 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
   function handleSubmit(e) {
     e.preventDefault();
     editTask(id, newName);
-    setNewName("");
     setEditing(false);
   }
   function handleChange(e) {
@@ -16,8 +15,8 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
     <>
       <form onSubmit={handleSubmit}>
           <div className="c-cb">
-            <input id={id} type="text" name={newName} key={id} onChange={handleChange} />
-            <label className="todo-label" htmlFor={id}>
+            <input id={`edit-${id}`} type="text" name={newName} value={newName} key={id} onChange={handleChange} />
+            <label className="todo-label" htmlFor={`edit-${id}`}>
               {newName}
             </label>
           </div>
@@ -25,7 +24,7 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
             <button type="button" className="btn" onClick={() => setEditing(false)}>
               Cancel <span className="visually-hidden">renaming {newName}</span>
             </button>
-            <button type="button" className="btn btn__danger">
+            <button type="submit" className="btn btn__danger">
               Save <span className="visually-hidden">renaming {newName}</span>
             </button>
           </div>
@@ -35,8 +34,8 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
   const viewTemplate = (
     <>
           <div className="c-cb">
-            <input id={id} type="checkbox" defaultChecked={isChecked} name={newName} key={id} onChange={() => toggleTaskCompleted(id)} />
-            <label className="todo-label" htmlFor={id}>
+            <input id={`view-${id}`} type="checkbox" defaultChecked={isChecked} key={id} onChange={() => toggleTaskCompleted(id)} />
+            <label className="todo-label" htmlFor={`view-${id}`}>
               {newName}
             </label>
           </div>
@@ -50,9 +49,10 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
           </div>
     </>
   );
+  console.log("Rendering", isEditing ? "edit mode" : "view mode");
   return (
     <>
-      {isEditing ? editTemplate : viewTemplate};
+      {isEditing ? editTemplate : viewTemplate}
     </>
   )
 }
