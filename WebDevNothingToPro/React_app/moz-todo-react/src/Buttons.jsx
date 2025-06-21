@@ -1,13 +1,13 @@
-function Button({first,second,third,isPressed}){
+function Button({val,isPressed}){
   return (
 
         <button type="button" className="btn toggle-btn" aria-pressed={isPressed}>
 
-          <span className="visually-hidden">{first} </span>
+          <span className="visually-hidden">Show </span>
 
-          <span>{second}</span>
+          <span>{val}</span>
 
-          <span className="visually-hidden"> {third}</span>
+          <span className="visually-hidden">tasks</span>
 
         </button>
   )

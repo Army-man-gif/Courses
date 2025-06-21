@@ -63,9 +63,7 @@ function App() {
   const FILTER_NAMES = Object.keys(FILTER_MAP);
   const filterList = FILTER_NAMES.map((name) => (
     <Buttons 
-      first={"Show"} 
-      second={name} 
-      third={"tasks"}
+      val={name} 
       isPressed={name === filter}
       setFilter={setFilter}
      />
