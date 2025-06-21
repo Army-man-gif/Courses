@@ -23,7 +23,8 @@ function Form({id,type,addTask}) {
         <button type="submit" className="btn btn__primary btn__lg">
           Add
         </button>
-      </form>    </>
+      </form>    
+    </>
   )
 }
 
