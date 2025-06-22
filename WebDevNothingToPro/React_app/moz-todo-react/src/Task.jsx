@@ -1,6 +1,11 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
+
+  const editFieldRef = useRef(null);
+  const editButtonRef = useRef(null);
+
+
   const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState(name);
   function handleSubmit(e) {
@@ -15,7 +20,14 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
   const editTemplate = (
       <form onSubmit={handleSubmit}>
           <div>
-            <input id={`edit-${id}`} type="text" value={newName} key={id} onChange={handleChange} />
+            <input 
+              id={`edit-${id}`} 
+              type="text" 
+              value={newName} 
+              key={id} 
+              onChange={handleChange}
+              ref={editFieldRef}
+               />
           </div>
           <div className="btn-group">
             <button type="button" className="btn" onClick={() => setEditing(false)}>
@@ -36,7 +48,11 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
             </label>
           </div>
           <div className="btn-group">
-            <button type="button" className="btn" onClick={() => setEditing(true)}>
+            <button 
+              type="button" 
+              className="btn" 
+              onClick={() => setEditing(true)}
+              ref={editButtonRef}>
               Edit <span className="visually-hidden">{newName}</span>
             </button>
             <button type="button" className="btn btn__danger" onClick={() => deleteTask(id)} >
@@ -45,7 +61,6 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
           </div>
     </>
   );
-  console.log("Rendering", isEditing ? "edit mode" : "view mode");
   return (
     <>
       {isEditing ? editTemplate : viewTemplate}
