@@ -20,7 +20,7 @@ function App() {
   
   function deleteTask(id){
     const remainingTasks = currentVal.filter((task) => id !== task.id);
-    setCount(count-1)
+    count--;
     setValues(remainingTasks);
 
   }
@@ -38,7 +38,7 @@ function App() {
   function addTask(name){
     const newValue = {id:`todo-${nanoid()}`,name:name,isChecked:false}
     setValues([...currentVal,newValue]);
-    setCount(count+1)
+    count++;
   }
   const values = [
     { id: "todo-0", name: "Eat", isChecked: true },
@@ -47,11 +47,8 @@ function App() {
   ];
 
   const [currentVal,setValues] = useState(values);
-  const [count,setCount] = useState(currentVal.length);
+  let count = currentVal.length;
   let countNoun = "tasks";
-  if(count==1){
-    countNoun = "task";
-  }
   const [filter, setFilter] = useState("All");
   const FILTER_MAP = {
     All: () => true,
@@ -59,7 +56,8 @@ function App() {
     Completed: (task) => task.isChecked,
   };
   const FILTER_NAMES = Object.keys(FILTER_MAP);
-  const filterList = FILTER_NAMES.map((name) => (
+  const filterList = FILTER_NAMES
+  .map((name) => (
     <Buttons
       key={name}
       val={name} 
@@ -67,21 +65,23 @@ function App() {
       setFilter={setFilter}
      />
   ));
+  const filteredEls = currentVal.filter(FILTER_MAP[filter]);
+  count = filteredEls.length
+  if(count==1){
+    countNoun = "task";
+  }
   return (
     <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
       <Form id="new-todo-input" type="text" addTask={addTask}/>
       <div className="filters btn-group stack-exception">{filterList}</div>
-
       <h2 id="list-heading">{count} {countNoun} remaining</h2>
       
       <ul
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
-        {currentVal
-        .filter(FILTER_MAP[filter])
-        .map((task)=>(
+        {filteredEls.map((task)=>(
           <li key={task.id} className="todo stack-small">
             <Task 
               id={task.id} 
