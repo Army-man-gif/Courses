@@ -11,7 +11,6 @@ function App() {
   function editTask(id, newName){
     const editedTasks = currentVal.map((task) => {
       if (id === task.id){
-        console.log(task);
         return {...task, name: newName}
       }
       return task;
@@ -28,7 +27,6 @@ function App() {
   function toggleTaskCompleted(id) {
     const updatedTasks = currentVal.map((task) => {
       if (id === task.id){
-        console.log(task);
         return {...task, isChecked: !task.isChecked}
       }
       return task;
@@ -62,7 +60,8 @@ function App() {
   };
   const FILTER_NAMES = Object.keys(FILTER_MAP);
   const filterList = FILTER_NAMES.map((name) => (
-    <Buttons 
+    <Buttons
+      key={name}
       val={name} 
       isPressed={name === filter}
       setFilter={setFilter}
@@ -80,7 +79,9 @@ function App() {
         role="list"
         className="todo-list stack-large stack-exception"
         aria-labelledby="list-heading">
-        {currentVal.map((task)=>(
+        {currentVal
+        .filter(FILTER_MAP[filter])
+        .map((task)=>(
           <li key={task.id} className="todo stack-small">
             <Task 
               id={task.id} 
