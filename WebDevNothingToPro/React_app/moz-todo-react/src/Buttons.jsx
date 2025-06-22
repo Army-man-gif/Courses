@@ -1,7 +1,17 @@
-function Button({val,isPressed}){
+function Button({val,isPressed,setFilter}){
   return (
 
-        <button type="button" className="btn toggle-btn" aria-pressed={isPressed}>
+        <button 
+        
+        type="button" 
+        
+        className="btn toggle-btn" 
+        
+        aria-pressed={isPressed}
+        
+        onClick={() => setFilter(val)}
+
+        >
 
           <span className="visually-hidden">Show </span>
 
