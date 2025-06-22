@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
 
@@ -8,6 +8,15 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
 
   const [isEditing, setEditing] = useState(false);
   const [newName, setNewName] = useState(name);
+
+
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
   function handleSubmit(e) {
     e.preventDefault();
     editTask(id, newName);
@@ -61,6 +70,14 @@ function Task({name,id,isChecked,toggleTaskCompleted,deleteTask,editTask}){
           </div>
     </>
   );
+  const wasEditing = usePrevious(isEditing);
+  useEffect(() => {
+    if (!wasEditing && isEditing) {
+      editFieldRef.current.focus();
+    } else if(wasEditing && !isEditing) {
+    editButtonRef.current.focus();
+    }
+  }, [wasEditing, isEditing]);
   return (
     <>
       {isEditing ? editTemplate : viewTemplate}

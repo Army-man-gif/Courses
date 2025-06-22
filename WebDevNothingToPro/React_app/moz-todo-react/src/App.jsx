@@ -2,12 +2,20 @@ import "./App_replacedcss.css"
 import Form from './Form.jsx'
 import Buttons from './Buttons.jsx'
 import Task from './Task.jsx'
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 
 
 function App() {
   
+  function usePrevious(value) {
+    const ref = useRef();
+    useEffect(() => {
+      ref.current = value;
+    });
+    return ref.current;
+  }
+
   function editTask(id, newName){
     const editedTasks = currentVal.map((task) => {
       if (id === task.id){
@@ -70,12 +78,19 @@ function App() {
   if(count==1){
     countNoun = "task";
   }
+  const listHeadingRef = useRef(null);
+  const prevTaskLength = usePrevious(count);
+  useEffect(() => {
+    if (count < prevTaskLength) {
+      listHeadingRef.current.focus();
+    }
+  }, [count, prevTaskLength]);
   return (
     <div className="todoapp stack-la  rge">
       <h1>TodoMatic</h1>
       <Form id="new-todo-input" type="text" addTask={addTask}/>
       <div className="filters btn-group stack-exception">{filterList}</div>
-      <h2 id="list-heading">{count} {countNoun} remaining</h2>
+      <h2 id="list-heading" tabIndex="-1" ref={listHeadingRef}>{count} {countNoun} remaining</h2>
       
       <ul
         role="list"
