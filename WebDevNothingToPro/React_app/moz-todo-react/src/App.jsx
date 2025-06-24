@@ -7,7 +7,14 @@ import { nanoid } from "nanoid";
 
 
 function App() {
-  
+  const myObject = {
+    city: "Madrid",
+    greet() {
+      console.log(`Greetings from ${this.city}`);
+    },
+  };
+
+myObject.greet(); // Greetings from Madrid
   function usePrevious(value) {
     const ref = useRef();
     useEffect(() => {
@@ -85,8 +92,23 @@ function App() {
       listHeadingRef.current.focus();
     }
   }, [count, prevTaskLength]);
+  function addText(){
+    const myObject = {
+      city: "Madrid",
+      greet() {
+        console.log(`Greetings from ${this.city}`);
+      },
+    };
+    document.getElementById("text").textContent=myObject.greet();
+  }
   return (
     <div className="todoapp stack-la  rge">
+      <p id="text">
+
+      </p>
+      <button type="button" onClick={}>
+          Objects
+      </button>
       <h1>TodoMatic</h1>
       <Form id="new-todo-input" type="text" addTask={addTask}/>
       <div className="filters btn-group stack-exception">{filterList}</div>
