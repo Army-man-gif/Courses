@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "move-build": "cp -r dist/* ../Build_files/* && rimraf dist"
+    "move-build": "cp -r dist/* ../Build_files/ && rimraf dist",
+    "build-and-move": "npm run build && npm run move-build"
+
 
   },
   "dependencies": {
