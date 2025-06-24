@@ -104,7 +104,7 @@ myObject.greet(); // Greetings from Madrid
   return (
     <div className="todoapp stack-la  rge">
       <p id="text">
-
+          Text
       </p>
       <button type="button" onClick={}>
           Objects
