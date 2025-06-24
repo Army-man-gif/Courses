@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "move-build": "cp -r dist/* ../Build_files/* && rimraf dist"
+
   },
   "dependencies": {
     "react": "^19.1.0",
