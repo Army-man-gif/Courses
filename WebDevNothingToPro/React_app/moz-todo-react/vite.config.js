@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Courses/WebDevNothingToPro/React_app/mozo-todo-react/',
+  base: '/Courses/WebDevNothingToPro/React_app/mozo-todo-react/Build_files',
   plugins: [react()],
   server: {
     open: true,
