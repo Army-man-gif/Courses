@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "move-build": "rimraf ../Build_files/*",
+    "move-build": "rimraf ../Build_files  && cp -r dist/* ../Build_files/ && rimraf dist",
     "build-and-move": "npm run build && npm run move-build"
 
 
