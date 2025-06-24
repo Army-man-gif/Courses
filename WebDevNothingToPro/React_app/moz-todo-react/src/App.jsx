@@ -93,13 +93,25 @@ myObject.greet(); // Greetings from Madrid
     }
   }, [count, prevTaskLength]);
   function addText(){
-    const myObject = {
+    let myObject = {
       city: "Madrid",
       greet() {
         console.log(`Greetings from ${this.city}`);
       },
     };
-    document.getElementById("text").textContent=myObject.greet();
+    do {
+      myObject = Object.getPrototypeOf(myObject);
+      console.log(myObject);
+    } while (myObject);
+    document.getElementById("text").textContent=myObject.city;
+    const personPrototype = {
+      greet() {
+        console.log("hello!");
+      },
+    };
+
+    const carl = Object.create(personPrototype);
+    carl.greet(); // hello!
   }
   return (
     <div className="todoapp stack-la  rge">
