@@ -106,7 +106,7 @@ myObject.greet(); // Greetings from Madrid
       <p id="text">
           Text
       </p>
-      <button type="button" onClick={}>
+      <button type="button" onClick={addText}>
           Objects
       </button>
       <h1>TodoMatic</h1>
