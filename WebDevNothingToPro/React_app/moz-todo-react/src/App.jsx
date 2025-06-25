@@ -99,10 +99,6 @@ myObject.greet(); // Greetings from Madrid
         console.log(`Greetings from ${this.city}`);
       },
     };
-    do {
-      myObject = Object.getPrototypeOf(myObject);
-      console.log(myObject);
-    } while (myObject);
     document.getElementById("text").textContent=myObject.city;
     const personPrototype = {
       greet() {
@@ -112,6 +108,10 @@ myObject.greet(); // Greetings from Madrid
 
     const carl = Object.create(personPrototype);
     carl.greet(); // hello!
+    do {
+      myObject = Object.getPrototypeOf(myObject);
+      console.log(myObject);
+    }while (myObject);
   }
   return (
     <div className="todoapp stack-la  rge">
