@@ -73,7 +73,9 @@ function Canvas(){
 
             requestAnimationFrame(loop);
         }
+        loop();
     })
+
 
     return(
         <>
