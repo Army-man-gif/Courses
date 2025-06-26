@@ -33,10 +33,10 @@ function Canvas(){
                 ctx.fill();
             }
             update(){
-                if((this.x + this.size >= width)|(this.x - this.size <= 0)){
+                if((this.x + this.size >= width)||(this.x - this.size <= 0)){
                     this.velX = -this.velX;
                 }
-                if((this.y + this.size >= width)|(this.y - this.size <= 0)){
+                if((this.y + this.size >= height)||(this.y - this.size <= 0)){
                     this.velY = -this.velY;
                 }
                 this.x += this.velX;
