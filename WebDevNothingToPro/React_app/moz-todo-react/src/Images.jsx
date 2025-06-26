@@ -62,7 +62,6 @@ function Canvas(){
 
             balls.push(ball);
         }
-        const testBall = new Ball(50, 100, 4, 4, "blue", 10);
         testBall.draw();
     })
     return(
