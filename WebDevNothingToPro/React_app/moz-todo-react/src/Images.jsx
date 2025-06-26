@@ -33,24 +33,29 @@ function Canvas(){
                 ctx.fill();
             }
             update(){
-                if((this.x + this.size >= width)||(this.x - this.size <= 0)){
+                if((this.x + this.size >= width-this.size)||(this.x - this.size <= this.size)){
                     this.velX = -this.velX;
                 }
-                if((this.y + this.size >= height)||(this.y - this.size <= 0)){
+                if((this.y + this.size >= height-this.size)||(this.y - this.size <= this.size)){
                     this.velY = -this.velY;
                 }
                 this.x += this.velX;
                 this.y += this.velY;
             }
             collisionDetect() {
+                const increment = 10
                 for (const ball of balls) {
                     if (this !== ball) {
                         const x_distance = this.x - ball.x;
                         const y_distance = this.y - ball.y;
                         const distance = Math.sqrt(x_distance * x_distance + y_distance * y_distance);
-
+                        
                         if (distance < this.size + ball.size) {
-                            ball.color = this.color = randomRGB();
+                            this.velX = -this.velX - increment;
+                            this.velY = -this.velY - increment;
+                            ball.velX = -ball.velX + increment;
+                            ball.velY = -ball.velY + increment;
+                            return true;
                         }
                     }
                     }
@@ -60,7 +65,7 @@ function Canvas(){
 
         while (balls.length < 12) {
             const size = 15;
-            const speed = 20;
+            const speed = 5;
             const ball = new Ball(
                 /* 
                     Ball position always drawn at least one ball 
