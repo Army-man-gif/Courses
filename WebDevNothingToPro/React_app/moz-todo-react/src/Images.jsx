@@ -46,8 +46,8 @@ function Canvas(){
         const balls = [];
 
         while (balls.length < 12) {
-            const size = random(10, 20);
-            const speed = 30;
+            const size = 15;
+            const speed = 20;
             const ball = new Ball(
                 /* 
                     Ball position always drawn at least one ball 
@@ -64,7 +64,7 @@ function Canvas(){
             balls.push(ball);
         }
         function loop() {
-            ctx.fillStyle = "rgb(0 0 0 / 25%)";
+            ctx.fillStyle = "rgb(0 0 0 / 75%)";
             ctx.fillRect(0, 0, width, height);
 
             for (const ball of balls) {
