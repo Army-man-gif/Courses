@@ -45,12 +45,12 @@ function Canvas(){
             collisionDetect() {
                 for (const ball of balls) {
                     if (this !== ball) {
-                        const dx = this.x - ball.x;
-                        const dy = this.y - ball.y;
-                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        const x_distance = this.x - ball.x;
+                        const y_distance = this.y - ball.y;
+                        const distance = Math.sqrt(x_distance * x_distance + y_distance * y_distance);
 
                         if (distance < this.size + ball.size) {
-                        ball.color = this.color = randomRGB();
+                            ball.color = this.color = randomRGB();
                         }
                     }
                     }
