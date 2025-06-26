@@ -45,8 +45,9 @@ function Canvas(){
         }
         const balls = [];
 
-        while (balls.length < 25) {
+        while (balls.length < 12) {
             const size = random(10, 20);
+            const speed = 30;
             const ball = new Ball(
                 /* 
                     Ball position always drawn at least one ball 
@@ -54,8 +55,8 @@ function Canvas(){
                 */
                 random(0 + size, width - size),
                 random(0 + size, height - size),
-                random(-7, 7),
-                random(-7, 7),
+                random(-speed, speed),
+                random(-speed, speed),
                 randomRGB(),
                 size,
             );
@@ -80,7 +81,7 @@ function Canvas(){
     return(
         <>
             <h1>
-                Canvas
+                
             </h1>
             <canvas>
 
