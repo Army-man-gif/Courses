@@ -46,6 +46,7 @@ function Canvas(){
         const balls = [];
 
         while (balls.length < 25) {
+            const size = random(10, 20);
             const ball = new Ball(
                 /* 
                     Ball position always drawn at least one ball 
@@ -56,7 +57,7 @@ function Canvas(){
                 random(-7, 7),
                 random(-7, 7),
                 randomRGB(),
-                random(10, 20),
+                size,
             );
 
             balls.push(ball);
