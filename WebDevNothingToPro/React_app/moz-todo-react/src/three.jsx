@@ -29,7 +29,7 @@ function Three(){
             texture.repeat.set(1, 1);
 
             const geometry = new THREE.BoxGeometry(2.4, 2.4, 2.4);
-            const material = new THREE.MeshLambertMaterial({ map: texture });
+            const material = new THREE.MeshPhongMaterial({ map: texture });
             cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
 
