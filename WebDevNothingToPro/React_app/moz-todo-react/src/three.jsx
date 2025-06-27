@@ -30,7 +30,7 @@ function Three(){
             const material = new THREE.MeshLambertMaterial({ map: texture });
             cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
-            
+
             const light = new THREE.AmbientLight("rgb(255 255 255)"); // soft white light
             scene.add(light);
 
@@ -40,6 +40,13 @@ function Three(){
             scene.add(spotLight);
             draw();
         });
+        function draw() {
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+
+            requestAnimationFrame(draw);
+        }
 
     },[]);
 
