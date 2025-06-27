@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import * as THREE from 'three';
+import './index.css';
+
 function Three(){
     useEffect(() => {
         const scene = new THREE.Scene();
