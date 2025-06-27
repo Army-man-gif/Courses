@@ -26,7 +26,7 @@ function Three(){
 
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
-            texture.repeat.set(2, 2);
+            texture.repeat.set(1, 1);
 
             const geometry = new THREE.BoxGeometry(2.4, 2.4, 2.4);
             const material = new THREE.MeshLambertMaterial({ map: texture });
