@@ -20,7 +20,7 @@ function Three(){
 
         const loader = new THREE.TextureLoader();
 
-        loader.load("C:/Users/khait/Downloads/download(1).jpeg", (texture) => {
+        loader.load("/Courses/WebDevNothingToPro/React_app/mozo-todo-react/public/download%20(1).jpeg", (texture) => {
 
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
@@ -42,7 +42,7 @@ function Three(){
         });
 
 
-        
+
         function draw() {
             cube.rotation.x += 0.01;
             cube.rotation.y += 0.01;
