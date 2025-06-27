@@ -37,7 +37,7 @@ function Three(){
             scene.add(light);
 
             const spotLight = new THREE.SpotLight("rgb(255 255 255)");
-            spotLight.position.set(100, 1000, 1000);
+            spotLight.position.set(5, 5, 5);
             spotLight.castShadow = true;
             scene.add(spotLight);
             draw();
