@@ -20,7 +20,7 @@ function Three(){
 
         const loader = new THREE.TextureLoader();
 
-        loader.load("/Courses/WebDevNothingToPro/React_app/mozo-todo-react/public/download%20(1).jpeg", (texture) => {
+        loader.load("public/download%20(1).jpeg", (texture) => {
 
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
