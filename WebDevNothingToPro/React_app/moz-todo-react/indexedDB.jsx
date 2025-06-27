@@ -1,6 +1,7 @@
 
 
 function database(){
+    let db;
     return (
         <>
         </>
