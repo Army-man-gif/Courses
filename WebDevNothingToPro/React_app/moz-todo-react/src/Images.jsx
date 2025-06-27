@@ -65,7 +65,7 @@ function Canvas(){
 
         while (balls.length < 12) {
             const size = 15;
-            const speed = 5;
+            const speed = 20;
             const ball = new Ball(
                 /* 
                     Ball position always drawn at least one ball 
@@ -88,6 +88,7 @@ function Canvas(){
             for (const ball of balls) {
                 ball.draw();
                 ball.update();
+                ball.collisionDetect();
             }
 
             requestAnimationFrame(loop);
