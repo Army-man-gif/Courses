@@ -30,10 +30,17 @@ function Three(){
             const material = new THREE.MeshLambertMaterial({ map: texture });
             cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
+            
+            const light = new THREE.AmbientLight("rgb(255 255 255)"); // soft white light
+            scene.add(light);
 
+            const spotLight = new THREE.SpotLight("rgb(255 255 255)");
+            spotLight.position.set(100, 1000, 1000);
+            spotLight.castShadow = true;
+            scene.add(spotLight);
             draw();
-        
         });
+
     },[]);
 
     return (
