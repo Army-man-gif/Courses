@@ -20,7 +20,7 @@ function Three(){
 
         const loader = new THREE.TextureLoader();
 
-        loader.load("C:/Users/khait/Downloads/download.jpeg", (texture) => {
+        loader.load("C:/Users/khait/Downloads/download(1).jpeg", (texture) => {
 
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
