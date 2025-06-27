@@ -20,8 +20,8 @@ function Three(){
 
         const loader = new THREE.TextureLoader();
 
-        loader.load("metal003.png", (texture) => {
-            
+        loader.load("C:/Users/khait/Downloads/download.jpeg", (texture) => {
+
             texture.wrapS = THREE.RepeatWrapping;
             texture.wrapT = THREE.RepeatWrapping;
             texture.repeat.set(2, 2);
