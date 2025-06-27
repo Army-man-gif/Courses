@@ -30,6 +30,7 @@ function Three(){
 
             const geometry = new THREE.BoxGeometry(2.4, 2.4, 2.4);
             const material = new THREE.MeshPhongMaterial({ map: texture });
+            renderer.setClearColor(0xff0000);
             cube = new THREE.Mesh(geometry, material);
             scene.add(cube);
 
