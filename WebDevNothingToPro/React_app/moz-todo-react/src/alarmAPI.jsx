@@ -4,18 +4,38 @@ function Alarm(){
     useEffect(() => {
         const output = document.querySelector("#output");
         const button = document.querySelector("#set-alarm");
-
-        function setAlarm() {
-            setTimeout(() => {
-                output.textContent = "Wake up!";
-            }, 1000);
+        const name = document.querySelector("#name");
+        const delay = document.querySelector("#delay");
+        name.value = "";
+        delay.value = "";
+        function setAlarm(person, delay) {
+            return new Promise((resolve, reject) => {
+                if (delay < 0) {
+                    reject(new Error("Alarm delay must not be negative"));
+                    return;
+                }
+                setTimeout(() => {
+                    resolve(`Wake up, ${person}!`);
+                }, delay);
+            });
         }
 
-        button.addEventListener("click", setAlarm);
+        button.addEventListener("click", () => {
+            const delayNum = Number(delay.value);
+            setAlarm(name.value,delayNum)
+                .then((message) => {
+                    output.textContent = message
 
+                })
+                .catch((error) => {
+                    output.textContent = `Couldn't set alarm: ${error}`
+                });
+        });
     },[])
     return(
         <>
+            <input type="text" id="name" placeholder="Enter name"/>
+            <input type="number" id="delay" placeholder="Enter delay"/>
             <button id="set-alarm">Set alarm</button>
             <div id="output"></div>
         </>
