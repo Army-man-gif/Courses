@@ -25,10 +25,13 @@ function Alarm(){
             setAlarm(name.value,delayNum)
                 .then((message) => {
                     output.textContent = message
-
+                    name.value = "";
+                    delay.value = "";
                 })
                 .catch((error) => {
                     output.textContent = `Couldn't set alarm: ${error}`
+                    name.value = "";
+                    delay.value = "";
                 });
         });
     },[])
