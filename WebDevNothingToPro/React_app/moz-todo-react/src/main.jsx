@@ -1,9 +1,9 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import Three from './three.jsx'
+import BasicAnimation from './BasicsCSSAnimation.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Three />
+    <BasicAnimation />
   </StrictMode>,
 )
