@@ -16,9 +16,6 @@ const fetchPromise2 = fetch(
 
 fetchPromise2
   .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
     return response.json();
   })
   .then((data) => {
