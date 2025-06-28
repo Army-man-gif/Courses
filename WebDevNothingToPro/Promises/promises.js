@@ -23,4 +23,7 @@ fetchPromise2
   })
   .then((data) => {
     console.log(data[0].name);
+  })
+  .catch((error) => {
+    console.error(`Could not get products: ${error}`);
   });
