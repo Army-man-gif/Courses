@@ -9,3 +9,14 @@ fetchPromise.then((response) => {
 });
 
 console.log("Started request…");
+
+const fetchPromise2 = fetch(
+  "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+);
+
+fetchPromise2.then((response) => {
+  const jsonPromise = response.json();
+  jsonPromise.then((data) => {
+    console.log(data[0].name);
+  });
+})
