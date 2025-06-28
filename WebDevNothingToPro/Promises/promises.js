@@ -25,22 +25,42 @@ fetchPromise2
     console.error(`Could not get products: ${error}`);
   });
 
-    const fetchPromise3 = fetch(
-        "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
-    );
-    const fetchPromise4 = fetch(
-        "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
-    );
-    const fetchPromise5 = fetch(
-        "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
-    );
+  const fetchPromise3 = fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+  );
+  const fetchPromise4 = fetch(
+      "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+  );
+  const fetchPromise5 = fetch(
+      "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
+  );
 
-Promise.all([fetchPromise3, fetchPromise4, fetchPromise5])
-  .then((responses) => {
-    for (const response of responses) {
-      console.log(`${response.url}: ${response.status}`);
-    }
-  })
-  .catch((error) => {
-    console.error(`Failed to fetch: ${error}`);
-  });
+  Promise.all([fetchPromise3, fetchPromise4, fetchPromise5])
+    .then((responses) => {
+      for (const response of responses) {
+        console.log(`${response.url}: ${response.status}`);
+      }
+    })
+    .catch((error) => {
+      console.error(`Failed to fetch: ${error}`);
+    });
+
+  const fetchPromise6 = fetch(
+    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+  );
+  const fetchPromise7 = fetch(
+    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+  );
+  const fetchPromise8 = fetch(
+    "bad-scheme://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
+  );
+
+  Promise.all([fetchPromise6, fetchPromise7, fetchPromise8])
+    .then((responses) => {
+      for (const response of responses) {
+        console.log(`${response.url}: ${response.status}`);
+      }
+    })
+    .catch((error) => {
+      console.error(`Failed to fetch: ${error}`);
+    });
