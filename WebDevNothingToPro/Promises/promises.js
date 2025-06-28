@@ -64,3 +64,21 @@ fetchPromise2
     .catch((error) => {
       console.error(`Failed to fetch: ${error}`);
     });
+
+  const fetchPromise9 = fetch(
+    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
+  );
+  const fetchPromise10 = fetch(
+    "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/not-found",
+  );
+  const fetchPromise11 = fetch(
+    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
+  );
+
+  Promise.any([fetchPromise9, fetchPromise10, fetchPromise11])
+    .then((response) => {
+      console.log(`${response.url}: ${response.status}`);
+    })
+    .catch((error) => {
+      console.error(`Failed to fetch: ${error}`);
+    });
