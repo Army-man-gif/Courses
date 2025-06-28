@@ -1,4 +1,4 @@
-
+import "./Animation.css"
 
 function BasicAnimation() {
     return(
