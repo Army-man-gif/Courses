@@ -26,3 +26,4 @@ try:
 finally:
     # Close browser
     driver.quit()
+    
