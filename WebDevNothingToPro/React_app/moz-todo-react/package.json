@@ -15,7 +15,7 @@
     "clean-dist": "rimraf dist",
     "move-build": "npm run clean-buildfiles && npm run make-buildfiles && npm run copy-build && npm run clean-dist",
     "build-and-move": "npm run build && npm run move-build",
-    "build-and-move-and-push": "npm run build && npm run move-build &&  && npm run format && npm run git",
+    "build-and-move-and-push": "npm run build && npm run move-build && npm run format && npm run git",
     "pushToGit": "npm run format && npm run git",
     "git": "cd ../../../../Courses && git add . && git commit -m '.' && git push"
   },
