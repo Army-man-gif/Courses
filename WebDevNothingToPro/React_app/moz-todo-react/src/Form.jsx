@@ -1,18 +1,16 @@
 import { useState } from "react";
 
+function Form({ id, type, addTask }) {
+  const [name, setName] = useState("");
 
-function Form({id,type,addTask}) {
-
-  const[name,setName] = useState("");
-
-  function handleChange(event){
+  function handleChange(event) {
     setName(event.target.value);
   }
 
-  function handleSubmit(event){
+  function handleSubmit(event) {
     event.preventDefault();
     addTask(name);
-    setName("")
+    setName("");
   }
   return (
     <>
@@ -34,9 +32,9 @@ function Form({id,type,addTask}) {
         <button type="submit" className="btn btn__primary btn__lg">
           Add
         </button>
-      </form>    
+      </form>
     </>
-  )
+  );
 }
 
-export default Form
+export default Form;

@@ -1,6 +1,5 @@
-
 import { useEffect } from "react";
-function APIs(){
+function APIs() {
   useEffect(() => {
     // Create script element dynamically
     const script = document.createElement("script");
@@ -29,10 +28,7 @@ function APIs(){
       document.head.removeChild(link);
     };
   }, []);
-    return (
-        <>
-        </>
-    )
+  return <></>;
 }
 
-export default APIs
+export default APIs;
