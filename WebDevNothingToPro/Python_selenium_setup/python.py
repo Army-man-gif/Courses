@@ -37,6 +37,10 @@ except Exception as e:
 try:
     search_bar = wait.until(EC.element_to_be_clickable((By.NAME, "q")))
     print("Search bar is clickable")
+    overlays = driver.find_elements(By.CSS_SELECTOR, "div[style*='overlay']")
+    print(f"Overlays found: {len(overlays)}")
+    for overlay in overlays:
+        driver.execute_script("arguments[0].style.display = 'none';", overlay)
     search_bar.clear()
     search_bar.send_keys("Smiley face")
     search_bar.send_keys(Keys.RETURN)
