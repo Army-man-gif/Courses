@@ -1,0 +1,107 @@
+
+Git Commands Cheat Sheet
+========================
+
+1. git init
+   - Initialize a new Git repository in the current directory.
+
+2. git clone <repo_url>
+   - Clone an existing repository from a remote source (e.g., GitHub) to your local machine.
+
+3. git status
+   - Show the working directory status, including staged, unstaged, and untracked files.
+
+4. git add <file> or git add .
+   - Stage files for the next commit. `git add .` stages all changes in the current directory.
+
+5. git commit -m "message"
+   - Commit staged changes with a descriptive message.
+
+6. git log
+   - View the commit history.
+
+7. git branch
+   - List all local branches.
+
+8. git branch <branch_name>
+   - Create a new branch.
+
+9. git checkout <branch_name>
+   - Switch to the specified branch.
+
+10. git switch <branch_name>
+    - Alternative to checkout to switch branches.
+
+11. git switch -c <branch_name>
+    - Create and switch to a new branch.
+
+12. git merge <branch_name>
+    - Merge the specified branch into the current branch.
+
+13. git pull
+    - Fetch and integrate changes from the remote repository into your current branch.
+
+14. git push
+    - Push committed changes from your local branch to the remote repository.
+
+15. git push -u origin <branch_name>
+    - Push a new local branch to the remote and set it to track the remote branch.
+
+16. git remote -v
+    - List the current remote connections.
+
+17. git remote add origin <repo_url>
+    - Link your local repo to a remote repository URL.
+
+18. git fetch
+    - Download objects and refs from another repository without merging.
+
+19. git diff
+    - Show changes between commits, branches, or working directory and staging area.
+
+20. git reset <file>
+    - Unstage a file from the staging area.
+
+21. git rm <file>
+    - Remove a file from the working directory and staging area.
+
+22. git clean -f
+    - Remove untracked files from the working directory.
+
+23. git stash
+    - Temporarily save changes that are not ready to be committed.
+
+24. git stash pop
+    - Apply stashed changes and remove them from the stash list.
+
+25. git branch -d <branch_name>
+    - Delete a local branch.
+
+26. git push origin --delete <branch_name>
+    - Delete a remote branch.
+
+27. git tag <tag_name>
+    - Create a tag (like a version marker) on the current commit.
+
+28. git show <commit_hash or tag_name>
+    - Show details about a commit or tag.
+
+29. git revert <commit_hash>
+    - Create a new commit that undoes changes from a previous commit.
+
+30. git config --global user.name "Your Name"
+    - Set your Git user name globally.
+
+31. git config --global user.email "you@example.com"
+    - Set your Git email globally.
+
+32. git log --oneline --graph --decorate --all
+    - Show a condensed, graphical view of the commit history.
+
+33. git blame <file>
+    - Show who last modified each line of a file.
+
+---
+
+These are the most common Git commands used in daily workflows, from initializing repos, working with branches, collaboration, to cleaning and managing history.
+
