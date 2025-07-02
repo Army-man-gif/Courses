@@ -11,13 +11,15 @@ chromedriver_path = r"C:\Users\khait\Downloads\chromedriver-win64\chromedriver-w
 service = Service(executable_path=chromedriver_path)
 
 driver = webdriver.Chrome(service=service)
-#driver.get("https://www.browserstack.com/guide/python-selenium-to-run-web-automation-test")
-#print(driver.title)
-wait = WebDriverWait(driver, 10)
-#heading = wait.until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
-#print("Page heading:", heading.text)
+driver.get("https://www.browserstack.com/guide/python-selenium-to-run-web-automation-test")
+print(driver.title)
+wait = WebDriverWait(driver, 50)
+heading = wait.until(EC.presence_of_element_located((By.TAG_NAME, "h1")))
+print("Page heading:", heading.text)
+
 keywords = "chocolate cake"
 search_url = f"https://www.google.com/search?q={keywords.replace(' ', '+')}"
+time.sleep(10)
 driver.get(search_url)
 
 wait.until(EC.presence_of_element_located((By.ID, "search")))  # wait for the search results container
