@@ -31,7 +31,10 @@
                     "temperatures.csv",
                     {
                         title: "My Graph with annotations",
-                        ylabel: "Temperature (°F)",
+                        axes: {
+                            y: {label: "High"},
+                            y2: {label: "Low"}
+                        },
                         xlabel: "Date",
                         legend: "always",
                     }
