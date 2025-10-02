@@ -32,6 +32,32 @@
                         "Low" : {
                             axis : 'y2'
                         }
+                    },
+                    xlabel : "Date",
+                    ylabel : "High Temperature (⁰F)",
+                    y2label : "Low Temperature (⁰F)",
+                    axes : {
+                        x : {
+                            axisLabelFormatter : function(val, granularity, opts, dygraph){
+                                return val.getFullYear();
+                            },
+                            axisLineColor : 'green',
+                            axisLabelFontSize: 16
+                        },
+                        y : {
+                            axisLabelFormatter : function(val, granularity, opts, dygraph){
+                                return Math.round(val) + " ⁰F";
+                            },
+                            axisLineColor : 'orange',
+                            axisLabelFontSize : 14
+                        },
+                        y2 : {
+                            axisLabelFormatter : function(val, granularity, opts, dygraph){
+                                return Math.round(val) + " ⁰F";
+                            },
+                            axisLineColor : 'purple',
+                            axisLabelFontSize : 12
+                        }
                     }
                 }
             );
