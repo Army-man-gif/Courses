@@ -26,7 +26,15 @@
                 h = new Dygraph(
                     document.getElementById("graphdiv2"),
                     "temperatures.csv",
-                    {}
+                    {
+                        title: "My Graph with annotations",
+                        ylabel: "Temperature (°F)",
+                        xlabel: "Date",
+                        legend: "always",
+                        annotationClickHandler: function(annotation, point, dg, event) {
+                        console.log("Clicked annotation:", annotation, point);
+                        }
+                    }
                 );
             });
         </script>
