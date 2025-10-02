@@ -22,11 +22,7 @@
     <script type="text/javascript">
         Dygraph.onDOMready(function onDOMready() {
             g = new Dygraph(
-
-                // containing div
                 document.getElementById("graphdiv"),
-
-                // CSV or path to a CSV file.
                 "Date,Temperature\n" +
                 "2008-05-07,75\n" +
                 "2008-05-08,70\n" +
@@ -39,12 +35,11 @@
             );
             g2 = new Dygraph(
                 document.getElementById("graphdiv2"),
-                "temperatures.csv", // path to CSV file
+                "temperatures.csv",
                 {
                     resizable:"both",
                     showRangeSelector: true,
-
-                }                  // options
+                }
             );
         });
     </script>
