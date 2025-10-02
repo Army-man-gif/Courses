@@ -78,6 +78,7 @@
 }
 
 .dygraph-axis-label-x {
+  display: block;
 }
 
 .dygraph-axis-label-y {
@@ -95,6 +96,8 @@
 
 .dygraph-xlabel {
   text-align: center;
+  margin-top: 10px;
+  display: block;
   /* font-size: based on xLabelHeight option */
 }
 

@@ -16,6 +16,9 @@
         style="width:500px; height:300px;">
     </div>
     <script type="text/javascript">
+        function conv(date){
+            return new Date(`${date}T00:00`).getTime();
+        }
         Dygraph.onDOMready(function onDOMready() {
             g2 = new Dygraph(
                 document.getElementById("graphdiv"),
@@ -34,14 +37,26 @@
                         }
                     },
                     xlabel : "Date",
+                    xLabelHeight: 20,
                     ylabel : "High Temperature (⁰F)",
                     y2label : "Low Temperature (⁰F)",
+
+                    labelsSeparateLines: true,
+                    labelsKMB: false,
+                    labelsUTC: false,
                     axes : {
                         x : {
                             axisLabelFormatter : function(val, granularity, opts, dygraph){
-                                return val.getFullYear();
+                                const d = new Date(val);
+                                return d.toLocaleDateString("en-US", { 
+                                    year: "numeric", 
+                                    month: "short", 
+                                    day: "numeric" 
+                                });
                             },
                             axisLineColor : 'green',
+                            axisLineWidth : 3,
+                            axisTickSize : 12,
                             axisLabelFontSize: 16
                         },
                         y : {
@@ -49,6 +64,8 @@
                                 return Math.round(val) + " ⁰F";
                             },
                             axisLineColor : 'orange',
+                            axisLineWidth : 3,
+                            axisTickSize : 12,
                             axisLabelFontSize : 14
                         },
                         y2 : {
@@ -56,8 +73,15 @@
                                 return Math.round(val) + " ⁰F";
                             },
                             axisLineColor : 'purple',
+                            axisLineWidth : 3,
+                            axisTickSize : 12,
                             axisLabelFontSize : 12
-                        }
+                        },
+                        dateWindow : [
+                            conv("2007-01-01"),
+                            conv("2007-01-17")
+                        ]
+                        
                     }
                 }
             );
