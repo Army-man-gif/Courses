@@ -7,7 +7,7 @@
     <link 
         rel="stylesheet" 
         type="text/css"
-        src="dygraph.css" 
+        href="dygraph.css" 
     />
 </head>
 <body>
@@ -15,30 +15,24 @@
         id="graphdiv"
         style="width:500px; height:300px;">
     </div>
-    <div 
-        id="graphdiv2"
-        style="width:500px; height:300px;">
-    </div>
     <script type="text/javascript">
         Dygraph.onDOMready(function onDOMready() {
-            g = new Dygraph(
-                document.getElementById("graphdiv"),
-                "Date,Temperature\n" +
-                "2008-05-07,75\n" +
-                "2008-05-08,70\n" +
-                "2008-05-09,80\n",
-                {
-                    resizable:"both",
-                    showRangeSelector: true,
-                }   
-
-            );
             g2 = new Dygraph(
-                document.getElementById("graphdiv2"),
+                document.getElementById("graphdiv"),
                 "temperatures.csv",
                 {
                     resizable:"both",
-                    showRangeSelector: true,
+                    //showRangeSelector: true,
+                    rollPeriod: 7,
+                    //showRoller: true,
+                    series : {
+                        "High" : {
+                            axis: 'y1'
+                        },
+                        "Low" : {
+                            axis : 'y2'
+                        }
+                    }
                 }
             );
         });
