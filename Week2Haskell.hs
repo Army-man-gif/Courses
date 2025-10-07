@@ -120,8 +120,10 @@ isEmpty'' :: [a] -> Bool
 isEmpty'' [] = True
 isEmpty'' (_:_) = False
 
+sndElem :: [a] -> a
+sndElem (_:x:_) = x
 
-printCurrentExpression = putStr(show(swap (1,2)))
+printCurrentExpression = putStr(show(sndElem [1,2,3,4,5,6,7,8,9,10]))
 
 
 
