@@ -123,6 +123,16 @@ isEmpty'' (_:_) = False
 sndElem :: [a] -> a
 sndElem (_:x:_) = x
 
+isEmpty2 :: [a] -> Bool
+isEmpty2 x = case x of [] -> True
+                       (_:_) -> False
+
+double :: Int -> Int
+double x = 2 * x
+
+double' :: Int -> Int
+double' = \x -> 2 * x
+
 printCurrentExpression = putStr(show(sndElem [1,2,3,4,5,6,7,8,9,10]))
 
 
