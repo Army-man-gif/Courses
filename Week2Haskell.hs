@@ -18,7 +18,6 @@ removeFirst xs = removeElem 1 xs
 removeBoth :: [a] -> [a]
 removeBoth [] = []
 removeBoth xs = removeFirst(removeLast(xs))
-printEl  = putStr (show(removeBoth([1,2,3,4])))
 -- End Exerecise
 
 abs' :: Integer -> Integer
@@ -131,11 +130,38 @@ double :: Int -> Int
 double x = 2 * x
 
 double' :: Int -> Int
+
+-- Lambda expressions are of the form \<input variables> -> <output>.
+-- For instance, we can define a function that returns its double as \x -> 2 * x.
+-- Here, the input variable is indicated by the backslash \. 
+-- After the arrow ->, the output of the function is specified.
 double' = \x -> 2 * x
 
-printCurrentExpression = putStr(show(sndElem [1,2,3,4,5,6,7,8,9,10]))
+-- Lambda expressions can have several input variables:
+
+mult :: Int -> Int -> Int
+mult x y = x * y
+
+mult' :: Int -> Int -> Int
+mult' = \x y -> x * y
+
+-- Same concept as multi' but just chaining lambda function input-outputs instead of multiple inputs
+mult'' :: Int -> (Int -> Int)
+mult'' = \x -> (\y -> x * y)
+
+-- Just like a pattern can ignore (part of) the input, a lambda expression can ignore its input
+
+alwaysZero :: Bool -> Int
+alwaysZero = \_ -> 0
+
+-- One important application of lambda expressions are higher-order functions, where functions are arguments to other functions.
+
+apply :: (a -> b) -> a -> b
+apply f x = f x
+
+printEl = print(apply (\_ -> 5) 'r')
 
 
 
 main :: IO()
-main = printCurrentExpression
+main = printEl
