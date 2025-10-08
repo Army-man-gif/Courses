@@ -54,3 +54,31 @@ main :: IO()
 main = print callFunc'
 
 -- End Exercise
+
+-- Start Exercise 2
+
+isEmpty :: [a] -> Bool
+isEmpty [] = True
+isEmpty _ = False
+
+-- End Exercise
+
+-- Start Exercise 2a
+
+safetailA :: [a] -> [a]
+safetailA xs = if isEmpty then [] else tail xs
+-- End Exercise
+
+-- Start Exercise 2b
+
+safetailB :: [a] -> [a]
+safetailB xs | isEmpty xs = [] 
+             | otherwise tail xs
+-- End Exercise
+
+-- Start Exercise 2c
+
+safetailC :: [a] -> [a]
+safetailC [] = []
+safetailC (_:xs) = xs
+-- End Exercise
