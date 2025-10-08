@@ -18,11 +18,39 @@
 -}
 
 -- Start Exercise 1a
-      removeLast :: [a] -> [a]
-      removeLast xs = reverse (tail (reverse xs))
+removeLast :: [a] -> [a]
+removeLast xs = reverse (tail (reverse xs))
 
-      removeElem :: Int -> [a] -> [a]
-      removeElem n xs = removeLast (take n xs) ++ drop n xs
+removeElem :: Int -> [a] -> [a]
+removeElem n xs = removeLast (take n xs) ++ drop n xs
 
+removeThird :: [a] -> [a]
+removeThird [] = []
+removeThird xs = removeElem 3 xs
+
+callFunc = removeThird([1,2,3,4,5,6,7,8])
+-- End Exercise
+
+-- Start Exercise 1b
+removeThird' :: [a] -> [a]
+removeThird' xs
+                | length xs < 3 = xs
+                | otherwise  = [xs !! 0, xs !! 1] ++ drop 3 xs
+
+
+-- End Exercise
+
+-- Start Exercise 1c 
+
+removeThird'' :: [a] -> [a]
+removeThird'' [] = []
+removeThird'' [x] = [x]
+removeThird'' [x,y] = [x,y]
+removeThird'' (x:y:_:zs) = x : y : zs
+
+callFunc' = removeThird''([1,2,3,4,5,6,7,8])
+
+main :: IO()
+main = print callFunc'
 
 -- End Exercise
