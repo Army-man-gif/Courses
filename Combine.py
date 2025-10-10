@@ -11,15 +11,15 @@ root.withdraw()
 
 file_path1 = filedialog.askopenfilename(
     title="Select first file",
-    filetypes=(("Text files", "*.txt"),
-               ("Word documents", "*.docx"),
+    filetypes=(("Word documents", "*.docx"),
+               ("Text files", "*.txt"),
                ("PDF files", "*.pdf"))
 )
 
 file_path2 = filedialog.askopenfilename(
     title="Select second file",
-    filetypes=(("Text files", "*.txt"),
-               ("Word documents", "*.docx"),
+    filetypes=(("Word documents", "*.docx"),
+               ("Text files", "*.txt"),
                ("PDF files", "*.pdf"))
 )
 
