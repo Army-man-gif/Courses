@@ -21,6 +21,9 @@ printdependentGenerators = print(dependentGenerators)
 concat :: [[a]] -> [a]
 concat xss = [x | xs <- xss, x <- xs]
 
+firsts :: [(a,b)] -> [a]
+firsts ps = [x | (x, _) <- ps]
+
 
 main :: IO()
 main = printdependentGenerators
