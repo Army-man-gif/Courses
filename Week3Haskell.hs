@@ -15,9 +15,12 @@ printthirdListComprehension = print([(x,y) | y <- [4,5], x <- [1,2,3]])
 
 -- Later generators can depend on the variables that are introduced by earlier generators:
 
---dependentGenerators = [(x,y) | x <- [1..3], y <- [x..2]]
-dependentGenerators = [(x,y) | x <- [1.1,1.2..3.9], y <- [x..2.9]]
+dependentGenerators = [(x,y) | x <- [1..3], y <- [x..2]]
 printdependentGenerators = print(dependentGenerators)
+
+concat :: [[a]] -> [a]
+concat xss = [x | xs <- xss, x <- xs]
+
 
 main :: IO()
 main = printdependentGenerators
