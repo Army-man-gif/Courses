@@ -27,5 +27,24 @@ firsts ps = [x | (x, _) <- ps]
 length :: [a] -> Int
 length xs = sum [1 | _ <- xs]
 
+evenNumberInThisRange = [x | x <- [1..10], even x]
+printevenNumberInThisRange = print(evenNumberInThisRange)
+
+factors :: Int -> [Int]
+factors n = [x | x <- [1..n], n `mod` x == 0]
+
+let2int :: Char -> Int
+let2int c = ord c - ord 'a'
+
+int2let :: Int -> Char
+int2let n = chr (ord 'a' + n)
+
+shift :: Int -> Char -> Char
+shift n c | isLower c = int2let ((let2int c + n) `mod` 26)
+          | otherwise = c
+
+encode :: Int -> String -> String
+encode n xs = [shift n x | x <- xs]
+totalString = encode 3 "haskell is fun \n" ++ encode (-3) "kdvnhoo lv ixq"
 main :: IO()
-main = print(Main.length [1,2,3,4,5,6]) 
+main = putStrLn (totalString)
