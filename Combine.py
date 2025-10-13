@@ -127,9 +127,11 @@ elif(fileType == ".pdf"):
     pdf1 = PdfReader(file_path1)
     pdf2 = PdfReader(file_path2)
     writer = PdfWriter()
-    for page in pdf1.pages + pdf2.pages:
+    for page in pdf1.pages:
         writer.add_page(page)
-    with open(os.path.join(directory1,'combined.pdf'), "wb") as f:
+    for page in pdf2.pages:
+        writer.add_page(page)
+    with open(os.path.join(directory1,'AKhaitan-2025_Oct_12_AK_CV_with_cover_letter.pdf'), "wb") as f:
         writer.write(f)
 elif(fileType == ".txt"):
     with open(file_path1, "r") as f1, open(file_path2, "r") as f2:
