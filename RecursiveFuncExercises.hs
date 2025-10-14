@@ -19,7 +19,7 @@ replicate :: Int -> a -> [a]
 replicate 0 x = []
 replicate n x  = [x] ++ Main.replicate (n - 1) x
 
-
+    
 
 main  :: IO()
 main  = print(Main.replicate 111111 'a' )
