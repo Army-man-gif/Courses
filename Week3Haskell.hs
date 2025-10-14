@@ -46,5 +46,16 @@ shift n c | isLower c = int2let ((let2int c + n) `mod` 26)
 encode :: Int -> String -> String
 encode n xs = [shift n x | x <- xs]
 totalString = encode 3 "haskell is fun \n" ++ encode (-3) "kdvnhoo lv ixq"
-main :: IO()
-main = putStrLn (totalString)
+
+-- Exercises
+
+-- Exercise 1
+pyths :: Int -> [(Int,Int,Int)]
+pyths max  = [(x,y,z) | x <- [1..max], y <- [1..max], z <- [1..max],x^2+y^2 == z^2]
+
+-- Exercise 2
+
+
+
+
+
