@@ -14,9 +14,14 @@ concat :: [[a]] -> [a]
 concat [] = []
 concat (x:xs) = x ++ Main.concat xs
 
+-- Exercise 3
+replicate :: Int -> a -> [a]
+replicate 0 x = []
+replicate n x  = [x] ++ Main.replicate (n - 1) x
+
 
 
 main  :: IO()
-main  = print(Main.concat [[1,2], [3,4], [5]] )
+main  = print(Main.replicate 111111 'a' )
 
 
