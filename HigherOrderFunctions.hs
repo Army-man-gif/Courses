@@ -27,3 +27,10 @@ chop8 bits  = take 8 bits : chop8 (drop 8 bits)
 
 decode :: [Bit] -> String
 decode = map (chr . bin2int) . chop8
+
+transmit :: String -> String
+transmit = decode . channel . encode
+
+channel :: [Bit] -> [Bit]
+channel = id
+
