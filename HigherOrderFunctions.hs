@@ -34,3 +34,4 @@ transmit = decode . channel . encode
 channel :: [Bit] -> [Bit]
 channel = id
 
+fdghs fdghfhfghfgdsrafr dghfdsadafgfhfdfsa
