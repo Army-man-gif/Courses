@@ -4,7 +4,6 @@
 
 -- see https://wiki.haskell.org/Safe_Haskell
 {-# LANGUAGE NoGeneralizedNewtypeDeriving, Safe #-}
-
 import Data.List
 
 data Atom = Beep | Silence
@@ -179,19 +178,81 @@ characterFromCode tree code = case getNode tree code of
     Just c  -> c
     Nothing -> error "Couldn't find character"
 
-splitLettersIntoDitDah :: Code -> [Code]
-splitLettersIntoDitDah [] = []
-splitLettersIntoDitDah xs
-    | dit `isPrefixOf` xs = dit : splitLettersIntoDitDah (drop (length dit) xs)
-    | dah `isPrefixOf` xs = dah : splitLettersIntoDitDah (drop (length dah) xs)
+splitCodesIntoDitDah :: Code -> [Code]
+splitCodesIntoDitDah [] = []
+splitCodesIntoDitDah xs
+    | dit `isPrefixOf` xs = dit : splitCodesIntoDitDah (drop (length dit) xs)
+    | dah `isPrefixOf` xs = dah : splitCodesIntoDitDah (drop (length dah) xs)
     | otherwise = error "Invalid Morse code"
 
 morseTree :: Tree
 morseTree = Branch Nothing (Branch (Just 'E') (Branch (Just 'I') (Branch (Just 'S') (Branch (Just 'H') (Branch (Just '5') Empty Empty) (Branch (Just '4') Empty Empty)) (Branch (Just 'V') Empty (Branch (Just '3') Empty Empty))) (Branch (Just 'U') (Branch (Just 'F') Empty Empty) (Branch Nothing Empty (Branch (Just '2') Empty Empty)))) (Branch (Just 'A') (Branch (Just 'R') (Branch (Just 'L') Empty Empty) Empty) (Branch (Just 'W') (Branch (Just 'P') Empty Empty) (Branch (Just 'J') Empty (Branch (Just '1') Empty Empty))))) (Branch (Just 'T') (Branch (Just 'N') (Branch (Just 'D') (Branch (Just 'B') (Branch (Just '6') Empty Empty) Empty) (Branch (Just 'X') Empty Empty)) (Branch (Just 'K') (Branch (Just 'C') Empty Empty) (Branch (Just 'Y') Empty Empty))) (Branch (Just 'M') (Branch (Just 'G') (Branch (Just 'Z') (Branch (Just '7') Empty Empty) Empty) (Branch (Just 'Q') Empty Empty)) (Branch (Just 'O') (Branch Nothing (Branch (Just '8') Empty Empty) Empty) (Branch Nothing (Branch (Just '9') Empty Empty) (Branch (Just '0') Empty Empty)))))
 
 convertThenCall :: Tree -> Code -> Char
-convertThenCall treeConfiguration character = characterFromCode treeConfiguration ( splitLettersIntoDitDah character)
+convertThenCall treeConfiguration character = characterFromCode treeConfiguration ( splitCodesIntoDitDah character)
 
 decodeTextWithTree :: Tree -> Code -> [Char]
 decodeTextWithTree treeConfiguration code = [if character == [] then ' ' else convertThenCall treeConfiguration character | character <- prep code]
+
+
+
+insertNode :: Tree -> Code -> Char -> Tree
+insertNode Empty [] c = Branch (Just c) Empty Empty
+insertNode Empty code c
+    | dit `isPrefixOf` code  = Branch Nothing (insertNode Empty (drop (length dit)code) c) Empty
+    | dah `isPrefixOf` code  = Branch Nothing Empty (insertNode Empty (drop (length dah)code) c)
+    | otherwise = error "Invalid code in path"
+insertNode (Branch _ left right) [] c = Branch (Just c) left right
+insertNode (Branch val left right) code c
+    | dit `isPrefixOf` code  = Branch val (insertNode left (drop (length dit)code) c) right
+    | dah `isPrefixOf` code  = Branch val left (insertNode right (drop (length dah)code) c)
+    | otherwise = error "Invalid code in path"
+
+
+buildTree :: Tree -> [(Char,Code)] -> Tree
+buildTree tree [] = tree
+buildTree tree ((character,path):rest) = 
+    let newTree = insertNode tree path character
+    in buildTree newTree rest
+
+builtTreeFromTable :: [(Char,Code)] -> Tree
+builtTreeFromTable pathCharPairs = buildTree Empty pathCharPairs
+
+
+-- Beep,Beep,Beep,Silence,Beep,Silence,Beep,Beep,Beep,Silence
+ramify :: Table -> Tree
+ramify table = builtTreeFromTable table
+
+
+-- So ths one is given a tree produce the table. basically the exact opposite of what i just did. could potentially
+-- use the getNode thing. But I also have to make a getPath tracker as well
+
+
+bfsSkipFound :: Tree -> [Char] -> Maybe (Char, Code)
+bfsSkipFound tree found = go [(tree, [])]
+  where
+    go [] = Nothing
+    go ((Empty, _):xs) = go xs
+    go ((Branch Nothing l r, path):xs) =
+      go (xs ++ [(l, path ++ dit), (r, path ++ dah)])
+    go ((Branch (Just val) l r, path):xs)
+      | val `elem` found = go (xs ++ [(l, path ++ dit), (r, path ++ dah)])
+      | otherwise        = Just (val, path)
+
+
+formAllPathCharPairs :: Tree -> [(Char,Code)] -> [(Char,Code)]
+formAllPathCharPairs tree foundPairs = 
+    case bfsSkipFound tree foundChars of
+        Just (val,path) -> 
+            let newFoundPairs = foundPairs ++ [(val,path)]
+            in formAllPathCharPairs tree newFoundPairs
+        Nothing -> foundPairs
+    where 
+        foundChars = [v| (v,_) <- foundPairs]
+        
+tabulate :: Tree -> Table
+tabulate tree = formAllPathCharPairs tree []
+main :: IO()
+main = print (tabulate morseTree)
+
 
