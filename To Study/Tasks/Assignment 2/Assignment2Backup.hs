@@ -5,16 +5,63 @@
 -- see https://wiki.haskell.org/Safe_Haskell
 {-# LANGUAGE NoGeneralizedNewtypeDeriving, Safe #-}
 
-module Assignment2 (encodeWord , encodeWords , encodeText ,
-                    decodeText ,
-                    decodeTextWithTree ,
-                    ramify ,
-                    tabulate ,
-                    tree) where
 
-import Types
 import Data.List
 
+data Atom = Beep | Silence
+  deriving (Eq, Show)
+
+type Code = [Atom]
+
+dit, dah, shortGap, mediumGap :: Code
+dit       = [Beep, Silence]
+dah       = [Beep, Beep, Beep, Silence]
+shortGap  = replicate (3-1) Silence
+mediumGap = replicate (7-1) Silence
+
+morseCode :: Char -> Code
+morseCode 'A' = dit ++ dah
+morseCode 'B' = dah ++ dit ++ dit ++ dit
+morseCode 'C' = dah ++ dit ++ dah ++ dit
+morseCode 'D' = dah ++ dit ++ dit
+morseCode 'E' = dit
+morseCode 'F' = dit ++ dit ++ dah ++ dit
+morseCode 'G' = dah ++ dah ++ dit
+morseCode 'H' = dit ++ dit ++ dit ++ dit
+morseCode 'I' = dit ++ dit
+morseCode 'J' = dit ++ dah ++ dah ++ dah
+morseCode 'K' = dah ++ dit ++ dah
+morseCode 'L' = dit ++ dah ++ dit ++ dit
+morseCode 'M' = dah ++ dah
+morseCode 'N' = dah ++ dit
+morseCode 'O' = dah ++ dah ++ dah
+morseCode 'P' = dit ++ dah ++ dah ++ dit
+morseCode 'Q' = dah ++ dah ++ dit ++ dah
+morseCode 'R' = dit ++ dah ++ dit
+morseCode 'S' = dit ++ dit ++ dit
+morseCode 'T' = dah
+morseCode 'U' = dit ++ dit ++ dah
+morseCode 'V' = dit ++ dit ++ dit ++ dah
+morseCode 'W' = dit ++ dah ++ dah
+morseCode 'X' = dah ++ dit ++ dit ++ dah
+morseCode 'Y' = dah ++ dit ++ dah ++ dah
+morseCode 'Z' = dah ++ dah ++ dit ++ dit
+morseCode '1' = dit ++ dah ++ dah ++ dah ++ dah
+morseCode '2' = dit ++ dit ++ dah ++ dah ++ dah
+morseCode '3' = dit ++ dit ++ dit ++ dah ++ dah
+morseCode '4' = dit ++ dit ++ dit ++ dit ++ dah
+morseCode '5' = dit ++ dit ++ dit ++ dit ++ dit
+morseCode '6' = dah ++ dit ++ dit ++ dit ++ dit
+morseCode '7' = dah ++ dah ++ dit ++ dit ++ dit
+morseCode '8' = dah ++ dah ++ dah ++ dit ++ dit
+morseCode '9' = dah ++ dah ++ dah ++ dah ++ dit
+morseCode '0' = dah ++ dah ++ dah ++ dah ++ dah
+morseCode  _  = undefined -- Avoid warnings
+
+type Table = [(Char, Code)]
+
+morseTable :: Table
+morseTable = [ (c , morseCode c) | c <- ['A'..'Z']++['0'..'9'] ]
 
 encodeChar :: Table -> Char -> Code
 encodeChar table character  = case lookup character table of
@@ -32,7 +79,7 @@ encodeWord table word = concat[ addShortGap (encodeChar table character) index l
                                             len = length word
 
 q1PartA :: [Code]
-q1PartA = [encodeWord markingTable "", encodeWord markingTable "A", encodeWord markingTable "0", encodeWord markingTable "HELLO", encodeWord markingTable "WORLD"]
+q1PartA = [encodeWord morseTable "", encodeWord morseTable "A", encodeWord morseTable "0", encodeWord morseTable "HELLO", encodeWord morseTable "WORLD"]
 
 addMediumGap :: Code -> Int -> Int -> Code
 addMediumGap code index totalLength 
@@ -45,7 +92,7 @@ encodeWords table words = concat[ addMediumGap (encodeWord table word) index len
                                         len = length words
 
 q1PartB :: [Code]
-q1PartB = [encodeWords markingTable [], encodeWords markingTable ["007"], encodeWords markingTable ["HI","THERE"]]
+q1PartB = [encodeWords morseTable [], encodeWords morseTable ["007"], encodeWords morseTable ["HI","THERE"]]
 
 indexesToSplitOn :: Eq a => [a] -> [a] -> [Int]
 indexesToSplitOn entireText phraseToSplitOn = [i | i <- [0.. length entireText - length phraseToSplitOn], isPrefixOf phraseToSplitOn (drop i entireText)]
@@ -95,7 +142,7 @@ encodeText table text = encodeWords table (splitGeneral " " text)
 
 
 q1PartC :: [Code]
-q1PartC = [encodeText markingTable "WORD", encodeText markingTable "HI THERE", encodeText markingTable "THIS IS A TEST"]
+q1PartC = [encodeText morseTable "WORD", encodeText morseTable "HI THERE", encodeText morseTable "THIS IS A TEST"]
 
 
 
@@ -114,6 +161,10 @@ prep code  = stitchCodesToFormLetters (splitSpecial code)
 decodeText :: Table -> Code -> String
 decodeText table code =  [if character == [] then ' ' else decodeChar table character | character <- prep code]
 
+
+data Tree = Empty
+          | Branch (Maybe Char) Tree Tree
+          deriving (Show , Eq)
 
 
 getNode :: Tree -> [Code] -> Maybe Char
@@ -205,6 +256,7 @@ tabulate :: Tree -> Table
 tabulate tree = formAllPathCharPairs tree []
 
 
+data Bracket = Round [Bracket] | Curly [Bracket] deriving (Show,Eq)
 brackets :: Bracket -> String
 brackets (Round ts) = "(" ++ concat [brackets t | t <- ts] ++ ")"
 brackets (Curly ts) = "{" ++ concat [brackets t | t <- ts] ++ "}"
