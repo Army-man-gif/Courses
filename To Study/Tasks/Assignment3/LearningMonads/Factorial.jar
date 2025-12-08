@@ -1,0 +1,15 @@
+class Factorial {
+    int fac (int n) {
+        int y = 1;
+        while (n > 1) {
+            System.out.println("n = " + n);
+            y = y * n;
+            n--;
+        }
+        return y;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Factorial of 5 is: " + fac(5));
+    }
+}
