@@ -5,12 +5,12 @@
 -- see https://wiki.haskell.org/Safe_Haskell
 {-# LANGUAGE NoGeneralizedNewtypeDeriving, Safe #-}
 
+module Assignment3 (toRose, fromRose, trace, roundRobin, schedule) where
 
 import Types
-import TestingFile
 import Control.Monad.State
 import Data.Functor.Identity
-import Data.List 
+import Data.List
 
 toRose :: Free [] a -> Rose a 
 toRose (Pure x) = Lf x
