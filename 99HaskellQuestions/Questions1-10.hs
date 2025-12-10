@@ -7,6 +7,7 @@ myLast (x:xs) = myLast xs
 -- Question 2
 myButLast :: [a] -> a
 myButLast []  = error "Empty list"
+myButLast [a] = error "List too short"
 myButLast [a1,a2] = a1
 myButLast (x:xs) = myButLast xs
 
@@ -15,3 +16,31 @@ elementAt :: [a] -> Int -> a
 elementAt [] _ = error "Empty list"
 elementAt (x:xs) 1 = x
 elementAt (x:xs) n  = elementAt xs (n-1)
+
+-- Question 4
+
+myLength :: [a] -> Int
+myLength [] = 0
+myLength (x:xs) = 1 + myLength xs
+
+-- Question 5
+
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse [a] = [a]
+myReverse (x:xs) = myReverse xs ++ [x]
+
+-- Question 6
+
+isPalindrome :: Eq a => [a] -> Bool
+isPalindrome [] = True
+isPalindrome [a] = True
+isPalindrome xs = myReverse xs == xs
+
+-- Question 7
+data NestedList a = Elem a | List [NestedList a]
+
+flatten :: NestedList a -> [a]
+flatten (Elem a) = [a]
+flatten (List []) = []
+flatten (List (x:xs)) = flatten x ++ flatten (List xs)
