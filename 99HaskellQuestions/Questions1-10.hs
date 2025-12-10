@@ -66,3 +66,16 @@ pack entireList@(x:xs) = collected : pack rest
         subList y (z:zs)
             | y == z = z: subList y zs
             | otherwise = []
+
+-- Question 10
+encode :: Eq a => [a] -> [(Int,a)]
+encode []  = []
+encode entireList@(x:xs) = (collected,x) : encode rest
+    where
+        collected = counter x entireList
+        rest = drop collected entireList
+
+        counter _ [] = 0
+        counter y (z:zs)
+            | y == z = 1 + counter y zs
+            | otherwise = 0
