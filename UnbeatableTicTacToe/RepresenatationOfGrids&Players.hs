@@ -32,3 +32,11 @@ turn g = if os <= xs then O else X
 
 diag :: Grid -> [Player]
 diag g = [g !! n !! n | n <- [0..size-1]]
+
+wins :: Player -> Grid -> Bool
+wins p g = any line (rows ++ cols ++ dias)
+           where
+             line = all (== p)
+             rows = g
+             cols = transpose g
+             dias = [diag g, diag (map reverse g)]
