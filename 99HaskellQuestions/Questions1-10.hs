@@ -44,3 +44,25 @@ flatten :: NestedList a -> [a]
 flatten (Elem a) = [a]
 flatten (List []) = []
 flatten (List (x:xs)) = flatten x ++ flatten (List xs)
+
+-- Question 8
+
+compress :: Eq a => [a] -> [a]
+compress [] = []
+compress [x] = [x]
+compress (x:rest@(y:ys))
+    | x == y = compress rest
+    | otherwise  = x : compress rest
+
+-- Question 9
+pack :: Eq a => [a] -> [[a]]
+pack []  = []
+pack entireList@(x:xs) = collected : pack rest
+    where
+        collected = subList x entireList
+        rest = drop (length collected) entireList
+
+        subList _ [] = []
+        subList y (z:zs)
+            | y == z = z: subList y zs
+            | otherwise = []
