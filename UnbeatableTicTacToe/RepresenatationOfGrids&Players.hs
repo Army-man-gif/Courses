@@ -40,3 +40,43 @@ wins p g = any line (rows ++ cols ++ dias)
              rows = g
              cols = transpose g
              dias = [diag g, diag (map reverse g)]
+
+won :: Grid -> Bool
+won g = wins O g || wins X g
+
+-- Moves
+
+type Move = Int
+
+valid :: Grid -> Move -> Bool
+valid g i = 0 <= i && i < size^2 && concat g !! i == B
+
+-- We need a auxiliary function to break a list into maximal segments of a given length:
+
+chop :: Int -> [a] -> [[a]]
+chop n [] = []
+chop n xs = take n xs : chop n (drop n xs)
+
+move :: Grid -> Move -> Player -> [Grid]
+move g i p = if valid g i
+               then [chop size (xs ++ [p] ++ ys)]
+               else []
+             where
+               (xs,B:ys) = splitAt i (concat g)
+-- Displaying a grid
+
+interleave :: a -> [a] -> [a]
+interleave x []     = []
+interleave x [y]    = [y]
+interleave x (y:ys) = y : x : interleave x ys
+
+showPlayer :: Player -> [String]
+showPlayer O = ["   ", " O ", "   "]
+showPlayer B = ["   ", "   ", "   "]
+showPlayer X = ["   ", " X ", "   "]
+
+showRow :: [Player] -> [String]
+showRow = beside . interleave bar . map showPlayer
+          where
+            beside = foldr1 (zipWith (++))
+            bar    = replicate 3 "|"
