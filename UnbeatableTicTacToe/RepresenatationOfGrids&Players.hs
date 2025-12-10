@@ -75,8 +75,37 @@ showPlayer O = ["   ", " O ", "   "]
 showPlayer B = ["   ", "   ", "   "]
 showPlayer X = ["   ", " X ", "   "]
 
-showRow :: [Player] -> [String]
-showRow = beside . interleave bar . map showPlayer
+
+showRow' :: [Player] -> [String]
+showRow' ps = beside (f ( g ps))
+           where
+             h :: [String] -> [String] -> [String]
+             h = zipWith (++)
+
+             beside :: [[String]] -> [String]
+             beside = foldr1 h
+
+             bar :: [String]
+             bar = replicate 3 "|"
+
+             f :: [[String]] -> [[String]]
+             f = interleave bar
+
+             g :: [Player] -> [[String]]
+             g = map showPlayer
+
+putGrid :: Grid -> IO ()
+putGrid = putStrLn . unlines . concat . interleave bar . map showRow'
           where
-            beside = foldr1 (zipWith (++))
-            bar    = replicate 3 "|"
+            bar = [replicate (size*4 - 1) '-']
+
+-- Reading a natural number
+
+getNat :: String -> IO Int
+getNat prompt = do putStr prompt
+                   xs <- getLine
+                   if xs /= [] && all isDigit xs then
+                      return (read xs)
+                   else
+                      do putStrLn "ERROR: Invalid number"
+                         getNat prompt
