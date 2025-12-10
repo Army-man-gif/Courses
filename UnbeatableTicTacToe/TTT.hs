@@ -133,3 +133,12 @@ run' g p | wins O g  = putStrLn "Player O wins!\n"
 
 prompt :: Player -> String
 prompt p = "Player " ++ show p ++ ", enter your move: "
+
+cls :: IO ()
+cls = putStr "\ESC[2J"
+
+goto :: (Int,Int) -> IO ()
+goto (x,y) = putStr ("\ESC[" ++ show y ++ ";" ++ show x ++ "H")
+
+
+-- Playing the game optimally using trees
