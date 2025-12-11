@@ -1,3 +1,4 @@
+module Question11To20 where
 -- Question 11
 data ListElement a = Single a | Multiple Int a deriving Show
 

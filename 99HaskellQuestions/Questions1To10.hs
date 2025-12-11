@@ -1,3 +1,4 @@
+module Questions1To10 where
 -- Question 1
 myLast :: [a] -> a 
 myLast [] = error "Empty list"
