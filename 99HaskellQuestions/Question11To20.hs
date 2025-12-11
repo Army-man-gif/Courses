@@ -40,3 +40,33 @@ encodeDirect (x:xs) =
             else Multiple count x: encodeDirect rest
 
 -- encodeDirect "aaaabccaadeeee"
+
+-- Question 14
+
+dupli :: [a] -> [a]
+dupli [] = []
+dupli (x:xs) = [x,x] ++ dupli xs
+
+-- dupli [1, 2, 3]
+
+-- Question 15
+copy :: Int -> a -> [a]
+copy 0 _ = []
+copy n x = x : copy (n-1) x
+repli :: [a] -> Int -> [a]
+repli [] _ = []
+repli (x:xs) n = copy n x ++ repli xs n
+-- repli "abc" 3
+
+-- Question 16
+
+dropEvery :: [a] -> Int -> [a]
+dropEvery [] _ = []
+dropEvery xs n = dropAtIntervals xs n
+    where
+        dropAtIntervals [] _ = []
+        dropAtIntervals (y:ys) 1 = dropAtIntervals ys n
+        dropAtIntervals (y:ys) counter  = y : dropAtIntervals ys (counter -1)
+
+-- dropEvery "abcdefghik" 3
+
