@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revision Tracker</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 30px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .controls input {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .controls input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-success {
+            background: #48bb78;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #38a169;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+        }
+
+        .btn-danger {
+            background: #f56565;
+            color: white;
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+
+        .btn-danger:hover {
+            background: #e53e3e;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        thead {
+            background: #2d3748;
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        th.center {
+            text-align: center;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        tbody tr:hover {
+            background: #f7fafc;
+        }
+
+        .chapter-name {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 8px;
+            border: 2px solid #cbd5e0;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .average-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .legend {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 10px;
+        }
+
+        .legend h3 {
+            color: #2d3748;
+            margin-bottom: 15px;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            border: 2px solid #cbd5e0;
+        }
+
+        .legend-text {
+            font-size: 14px;
+            color: #4a5568;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Revision Tracker</h1>
+        <p class="subtitle">Track your revision progress across different subjects and materials (0-100%)</p>
+
+        <div class="controls">
+            <input type="text" id="newChapter" placeholder="Add new chapter or subchapter...">
+            <button class="btn btn-primary" onclick="addChapter()">Add Chapter</button>
+            <button class="btn btn-success" onclick="exportToCSV()">📥 Export CSV</button>
+        </div>
+
+        <div class="table-wrapper">
+            <table id="revisionTable">
+                <thead>
+                    <tr>
+                        <th>Chapter</th>
+                        <th class="center">Lecture Notes</th>
+                        <th class="center">Lecture Videos</th>
+                        <th class="center">Reading Books</th>
+                        <th class="center">Exercise Sheets</th>
+                        <th class="center">Explanation Websites</th>
+                        <th class="center">Average</th>
+                        <th class="center">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </div>
+
+        <div class="legend">
+            <h3>🎨 Color Legend</h3>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #f3f4f6;"></div>
+                    <span class="legend-text">0% (Not Started)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #fecaca;"></div>
+                    <span class="legend-text">1-24% (Just Started)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #fed7aa;"></div>
+                    <span class="legend-text">25-49% (In Progress)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #fef08a;"></div>
+                    <span class="legend-text">50-74% (Half Way)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #bbf7d0;"></div>
+                    <span class="legend-text">75-99% (Almost Done)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background-color: #86efac;"></div>
+                    <span class="legend-text">100% (Complete)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const revisionTypes = ['Lecture Notes', 'Lecture Videos', 'Reading Books', 'Exercise Sheets', 'Explanation Websites'];
+        
+        let data = {
+            'Functional Programming': { 'Lecture Notes': 0, 'Lecture Videos': 0, 'Reading Books': 0, 'Exercise Sheets': 0, 'Explanation Websites': 0 },
+            'Databases': { 'Lecture Notes': 0, 'Lecture Videos': 0, 'Reading Books': 0, 'Exercise Sheets': 0, 'Explanation Websites': 0 },
+            'Web Development': { 'Lecture Notes': 0, 'Lecture Videos': 0, 'Reading Books': 0, 'Exercise Sheets': 0, 'Explanation Websites': 0 },
+            'AI2': { 'Lecture Notes': 0, 'Lecture Videos': 0, 'Reading Books': 0, 'Exercise Sheets': 0, 'Explanation Websites': 0 }
+        };
+
+        function getColor(percentage) {
+            if (percentage === 0) return '#f3f4f6';
+            if (percentage < 25) return '#fecaca';
+            if (percentage < 50) return '#fed7aa';
+            if (percentage < 75) return '#fef08a';
+            if (percentage < 100) return '#bbf7d0';
+            return '#86efac';
+        }
+
+        function updatePercentage(chapter, type, value) {
+            const numValue = Math.min(100, Math.max(0, parseInt(value) || 0));
+            data[chapter][type] = numValue;
+            saveData();
+            renderTable();
+        }
+
+        function getChapterAverage(chapter) {
+            const values = Object.values(data[chapter]);
+            return Math.round(values.reduce((a, b) => a + b, 0) / values.length);
+        }
+
+        function addChapter() {
+            const input = document.getElementById('newChapter');
+            const chapterName = input.value.trim();
+            
+            if (chapterName && !data[chapterName]) {
+                data[chapterName] = {};
+                revisionTypes.forEach(type => {
+                    data[chapterName][type] = 0;
+                });
+                input.value = '';
+                saveData();
+                renderTable();
+            } else if (data[chapterName]) {
+                alert('Chapter already exists!');
+            }
+        }
+
+        function deleteChapter(chapter) {
+            if (confirm(`Are you sure you want to delete "${chapter}"?`)) {
+                delete data[chapter];
+                saveData();
+                renderTable();
+            }
+        }
+
+        function renderTable() {
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+
+            Object.entries(data).forEach(([chapter, types]) => {
+                const row = document.createElement('tr');
+                const average = getChapterAverage(chapter);
+
+                row.innerHTML = `
+                    <td class="chapter-name">${chapter}</td>
+                    ${revisionTypes.map(type => `
+                        <td style="text-align: center;">
+                            <input type="number" min="0" max="100" value="${types[type]}"
+                                   style="background-color: ${getColor(types[type])}"
+                                   onchange="updatePercentage('${chapter}', '${type}', this.value)">
+                        </td>
+                    `).join('')}
+                    <td style="text-align: center;">
+                        <span class="average-badge" style="background-color: ${getColor(average)}">
+                            ${average}%
+                        </span>
+                    </td>
+                    <td style="text-align: center;">
+                        <button class="btn btn-danger" onclick="deleteChapter('${chapter}')">Delete</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function exportToCSV() {
+            let csv = 'Chapter,' + revisionTypes.join(',') + ',Average\n';
+            Object.entries(data).forEach(([chapter, types]) => {
+                const values = revisionTypes.map(type => types[type]);
+                const avg = getChapterAverage(chapter);
+                csv += `${chapter},${values.join(',')},${avg}\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'revision_tracker.csv';
+            a.click();
+        }
+
+        function saveData() {
+            localStorage.setItem('revisionTrackerData', JSON.stringify(data));
+        }
+
+        function loadData() {
+            const saved = localStorage.getItem('revisionTrackerData');
+            if (saved) {
+                data = JSON.parse(saved);
+            }
+        }
+
+        document.getElementById('newChapter').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addChapter();
+            }
+        });
+
+        loadData();
+        renderTable();
+    </script>
+</body>
+</html>
